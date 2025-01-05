@@ -1,20 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=2 format=3 uid="uid://bhltvuh5agp4h"]
 
-[ext_resource type="Texture2D" uid="uid://dyiwhxn7mglh3" path="res://icon.svg" id="1_2c12c"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_q8arx"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpq11"]
-size = Vector2(128, 128)
+[ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 
 [node name="TestWorld" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(238, 504)
-script = ExtResource("1_q8arx")
-metadata/_edit_group_ = true
+[node name="Player" parent="." instance=ExtResource("1_ol4xw")]
+max_speed = 50.0
+acceleration = 200.0
+friction_percentage = 5.0
+jump_height = 20.0
+jump_time_to_peak = 0.5
+jump_time_to_descent = 0.5
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_xpq11")
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
 
-[node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_2c12c")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(1, 0)
+polygon = PackedVector2Array(0, 159, 22, 158, 23, 142, 44, 143, 43, 177, 66, 178, 66, 163, 89, 162, 89, 149, 106, 148, 107, 134, 134, 134, 145, 134, 145, 122, 158, 122, 158, 107, 189, 90, 189, 133, 240, 132, 239, 86, 207, 86, 207, 78, 254, 79, 254, 63, 278, 63, 278, 0, 337, 0, 337, 196, -10, 195, -14, 0, -1, 0)
