@@ -8,7 +8,9 @@
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(300, 150)
 script = ExtResource("1_q8arx")
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_xpq11")
