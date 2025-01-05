@@ -9,7 +9,7 @@ size = Vector2(128, 128)
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(550, 320)
+position = Vector2(238, 504)
 script = ExtResource("1_q8arx")
 metadata/_edit_group_ = true
 
