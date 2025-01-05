@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 
 @export var speed = 300.0
-@export var JUMP_VELOCITY = -400.0
+@export var jump_velocity = -400.0
 
 
 func _physics_process(delta: float) -> void:
