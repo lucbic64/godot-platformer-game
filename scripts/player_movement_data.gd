@@ -18,7 +18,7 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 
-func _init() -> void:
+func calc_jump_values() -> void:
 	jump_velocity = (2.0 * jump_height) / jump_peak * -1.0
 	jump_gravity = (2.0 * jump_height) / jump_peak ** 2
 	fall_gravity = (2.0 * jump_height) / jump_descent ** 2
