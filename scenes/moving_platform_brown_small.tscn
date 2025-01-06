@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbtfbq1q7bxf3"]
+
+[ext_resource type="Script" path="res://scripts/moving_platform_small.gd" id="1_77fl0"]
+[ext_resource type="Texture2D" uid="uid://qqt4pvh8yt8u" path="res://assets/brackeys_platformer_assets/sprites/platforms.png" id="2_wp1kc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8uoc"]
+size = Vector2(16, 9)
+
+[node name="MovingPlatformBrownSmall" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_77fl0")
+
+[node name="MovingPlatformSprite" type="Sprite2D" parent="."]
+position = Vector2(8, 4)
+texture = ExtResource("2_wp1kc")
+region_enabled = true
+region_rect = Rect2(0, 16, 16, 9)
+
+[node name="MovingPlatformShape" type="CollisionShape2D" parent="."]
+position = Vector2(8, 4.5)
+shape = SubResource("RectangleShape2D_n8uoc")
+
+[node name="StartPosition" type="Marker2D" parent="."]
+
+[node name="EndPosition" type="Marker2D" parent="."]
