@@ -29,15 +29,9 @@ func check_floor_collision() -> void:
 	else:
 		var bodies = floor_detection.get_overlapping_bodies()
 		for moving_platform in bodies:
-			check_moving_platform_type(moving_platform)
-
-func check_moving_platform_type(moving_platform: Node2D) -> void:
-	if "Blue" in moving_platform.name:
-		print("slippery")
-	elif "Brown" in moving_platform.name:
-		print("slow")
-	elif "Yellow" in moving_platform.name:
-		print("damage")
+			if "Brown" in moving_platform.name: print("slow")
+			elif "Yellow" in moving_platform.name: print("damage")
+			elif "Blue" in moving_platform.name: print("slippery")
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta
