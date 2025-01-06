@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
+[ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/level_tile_map.tscn" id="3_l1pn1"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
 
 [node name="TestWorld" type="Node2D"]
@@ -13,3 +14,6 @@ player_movement = ExtResource("2_3h4f3")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 position = Vector2(1, 0)
 polygon = PackedVector2Array(0, 159, 22, 158, 23, 142, 44, 143, 43, 177, 66, 178, 66, 163, 89, 162, 89, 149, 106, 148, 107, 134, 134, 134, 145, 134, 145, 122, 158, 122, 158, 107, 189, 90, 189, 133, 240, 132, 239, 86, 207, 86, 207, 78, 254, 79, 254, 63, 278, 63, 278, 0, 337, 0, 337, 196, -10, 195, -14, 0, -1, 0)
+
+[node name="LevelTileMap" parent="." instance=ExtResource("3_l1pn1")]
+tile_map_data = PackedByteArray("AAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAAFAAYAAAACAAIAAAAGAAYAAAACAAIAAAAHAAYAAAACAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAABAAAAAAAMAAYAAAAEAAAAAAANAAYAAAAEAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAIAAEAAAAQAAYAAAAGAAAAAAARAAYAAAAHAAAAAAASAAYAAAAHAAEAAAATAAYAAAAHAAAAAAAUAAYAAAAGAAIAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAA=")
