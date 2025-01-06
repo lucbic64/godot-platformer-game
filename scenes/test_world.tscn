@@ -1,25 +1,11 @@
-[gd_scene load_steps=5 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=3 format=4 uid="uid://bhltvuh5agp4h"]
 
-[ext_resource type="Texture2D" uid="uid://dyiwhxn7mglh3" path="res://icon.svg" id="1_2c12c"]
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_q8arx"]
+[ext_resource type="PackedScene" uid="uid://6ahc50o428f5" path="res://scenes/player.tscn" id="1_xx04h"]
 [ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/level_tile_map.tscn" id="3_l1pn1"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xpq11"]
-size = Vector2(128, 128)
 
 [node name="TestWorld" type="Node2D"]
 
-[node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(162, 39)
-scale = Vector2(0.125, 0.125)
-script = ExtResource("1_q8arx")
-metadata/_edit_group_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("RectangleShape2D_xpq11")
-
-[node name="Icon" type="Sprite2D" parent="Player"]
-texture = ExtResource("1_2c12c")
+[node name="Player" parent="." instance=ExtResource("1_xx04h")]
 
 [node name="LevelTileMap" parent="." instance=ExtResource("3_l1pn1")]
-tile_map_data = PackedByteArray("AAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAAAAAAAAAQAAYAAAAAAAAAAAARAAYAAAAAAAAAAAASAAYAAAAAAAAAAAATAAYAAAAAAAAAAAAUAAYAAAAAAAAAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAACAAAAAAAEAAYAAAACAAAAAAAFAAYAAAACAAIAAAAGAAYAAAACAAIAAAAHAAYAAAACAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAABAAAAAAAMAAYAAAAEAAAAAAANAAYAAAAEAAAAAAAOAAYAAAAAAAAAAAAPAAYAAAAIAAEAAAAQAAYAAAAGAAAAAAARAAYAAAAHAAAAAAASAAYAAAAHAAEAAAATAAYAAAAHAAAAAAAUAAYAAAAGAAIAAAD+/wYAAAAAAAAAAAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAA=")

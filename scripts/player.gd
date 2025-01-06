@@ -4,6 +4,21 @@ extends CharacterBody2D
 @export var speed = 300.0
 @export var jump_velocity = -400.0
 
+@onready var floor_detection = $FloorDetection
+@onready var tile_map = $"../LevelTileMap"
+
+func _process(_delta: float) -> void:
+	check_floor_collision()
+
+func check_floor_collision() -> void:
+	if floor_detection.overlaps_body(tile_map):
+		var map_position: Vector2i = tile_map.local_to_map(tile_map.to_local(global_position))
+		map_position.y += 1
+		var tile_data: TileData = tile_map.get_cell_tile_data(map_position)
+		match tile_data.get_custom_data("GroundProperties"):
+			1: print("slow")
+			2: print("damage")
+			3: print("slippery")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
