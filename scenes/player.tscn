@@ -64,7 +64,7 @@ shape = SubResource("RectangleShape2D_0r1sa")
 
 [node name="FloorDetection" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 6
 
 [node name="DetectionShape" type="CollisionShape2D" parent="FloorDetection"]
 position = Vector2(7, 18)
