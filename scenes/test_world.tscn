@@ -5,12 +5,13 @@
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ol4xw")]
-max_speed = 50.0
-acceleration = 200.0
-friction_percentage = 5.0
-jump_height = 20.0
-jump_time_to_peak = 0.5
-jump_time_to_descent = 0.5
+max_speed = 75.0
+acceleration = 450.0
+friction_percentage = 7.5
+air_friction_percentage = 0.2
+jump_height = 25.0
+jump_time_to_peak = 0.25
+jump_time_to_descent = 0.3
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
