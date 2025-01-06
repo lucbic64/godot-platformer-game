@@ -3,7 +3,31 @@ extends CharacterBody2D
 
 @export var speed = 300.0
 @export var jump_velocity = -400.0
+@onready var floor_detection = $FloorDetection
 
+func _process(_delta: float) -> void:
+	check_floor_collision()
+
+func check_floor_collision() -> void:
+	var bodies = floor_detection.get_overlapping_bodies()
+	bodies = bodies.filter(func(element):
+		return element.name.begins_with("MovingPlatform")
+	)
+	match bodies.size():
+		1:
+			var moving_platform = bodies[0]
+			check_moving_platform_type(moving_platform)
+		2:
+			for moving_platform in bodies:
+				check_moving_platform_type(moving_platform)
+
+func check_moving_platform_type(moving_platform: Node2D) -> void:
+	if "Blue" in moving_platform.name:
+		print("slippery")
+	elif "Brown" in moving_platform.name:
+		print("slow")
+	elif "Yellow" in moving_platform.name:
+		print("damage")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

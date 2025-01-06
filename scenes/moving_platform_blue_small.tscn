@@ -6,7 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n8uoc"]
 size = Vector2(16, 9)
 
-[node name="MovingPlatformSmall" type="CharacterBody2D"]
+[node name="MovingPlatformBlueSmall" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
 script = ExtResource("1_8y6qp")
 
 [node name="MovingPlatformSprite" type="Sprite2D" parent="."]
