@@ -18,17 +18,20 @@ func _process(_delta: float) -> void:
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
 		var global_position_centered = global_position + Vector2(7, 11)
+		
 		var map_position: Vector2i = tile_map.local_to_map(tile_map.to_local(global_position_centered))
 		map_position.y += 1
+		
 		var tile_data: TileData = tile_map.get_cell_tile_data(map_position)
-		assert(tile_data, "Tile Data couldn't be fetched!")
+		if not tile_data: return
+		#assert(tile_data, "Tile Data couldn't be fetched!")
+		
 		match tile_data.get_custom_data("GroundProperties"):
 			1: print("slow")
 			2: print("damage")
 			3: print("slippery")
 	else:
-		var bodies = floor_detection.get_overlapping_bodies()
-		for moving_platform in bodies:
+		for moving_platform in floor_detection.get_overlapping_bodies():
 			if "Brown" in moving_platform.name: print("slow")
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")
