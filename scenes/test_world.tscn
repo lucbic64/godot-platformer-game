@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=7 format=3 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="Texture2D" uid="uid://dyiwhxn7mglh3" path="res://icon.svg" id="1_2c12c"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_q8arx"]
-[ext_resource type="PackedScene" uid="uid://wxe1xsidn2td" path="res://scenes/moving_platform.tscn" id="3_skuga"]
-[ext_resource type="PackedScene" uid="uid://bmo2jkxhdfpxt" path="res://scenes/moving_platform_small.tscn" id="4_3mj5r"]
+[ext_resource type="PackedScene" uid="uid://wxe1xsidn2td" path="res://scenes/moving_platform_green.tscn" id="3_skuga"]
+[ext_resource type="PackedScene" uid="uid://bmo2jkxhdfpxt" path="res://scenes/moving_platform_green_small.tscn" id="4_3mj5r"]
+[ext_resource type="PackedScene" uid="uid://csels3yvo0y0l" path="res://scenes/moving_platform_blue.tscn" id="5_nksey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xpq11"]
 size = Vector2(128, 128)
@@ -24,7 +25,6 @@ texture = ExtResource("1_2c12c")
 [node name="MovingPlatform" parent="." instance=ExtResource("3_skuga")]
 position = Vector2(169, 171)
 axis = "Y"
-metadata/_edit_group_ = true
 
 [node name="EndPosition" parent="MovingPlatform" index="3"]
 position = Vector2(0, -171)
@@ -36,5 +36,12 @@ axis = "Y"
 [node name="EndPosition" parent="MovingPlatform2" index="3"]
 position = Vector2(0, -171)
 
+[node name="MovingPlatform3" parent="." instance=ExtResource("5_nksey")]
+axis = "X"
+
+[node name="EndPosition" parent="MovingPlatform3" index="3"]
+position = Vector2(320, 0)
+
 [editable path="MovingPlatform"]
 [editable path="MovingPlatform2"]
+[editable path="MovingPlatform3"]

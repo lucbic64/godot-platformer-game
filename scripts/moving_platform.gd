@@ -11,7 +11,7 @@ func _ready() -> void:
 	boundaries[0] = start_pos.global_position[0 if axis == "X" else 1]
 	boundaries[1] = end_pos.global_position[0 if axis == "X" else 1]
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	assert(axis != "", "Axis must be set!")
 	velocity[0 if axis == "X" else 1] = direction * speed
 	if (axis == "X" and (global_position.x < boundaries[0] and direction == -1 or global_position.x > boundaries[1] - 32 and direction == 1)) or \
