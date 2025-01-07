@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=9 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
 [ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/apple.tscn" id="7_v6f2a"]
+[ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/elexir.tscn" id="8_3asr3"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -45,6 +46,9 @@ position = Vector2(0, -100)
 
 [node name="Apple" parent="." instance=ExtResource("7_v6f2a")]
 position = Vector2(251, 119)
+
+[node name="Elexir" parent="." instance=ExtResource("8_3asr3")]
+position = Vector2(200, 119)
 
 [editable path="MovingPlatformBrownSmall"]
 [editable path="MovingPlatformYellow"]
