@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=8 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
+[ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/apple.tscn" id="7_v6f2a"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -41,6 +42,9 @@ axis = "Y"
 
 [node name="EndPosition" parent="MovingPlatformBlueSmall" index="3"]
 position = Vector2(0, -100)
+
+[node name="Apple" parent="." instance=ExtResource("7_v6f2a")]
+position = Vector2(251, 119)
 
 [editable path="MovingPlatformBrownSmall"]
 [editable path="MovingPlatformYellow"]
