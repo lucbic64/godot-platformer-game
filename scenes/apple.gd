@@ -1,4 +1,4 @@
 extends Pickup
 
 func execute_effect() -> void:
-	print("Apple collected")
+	Events.pickup_collected.emit(Events.Pickups.APPLE)

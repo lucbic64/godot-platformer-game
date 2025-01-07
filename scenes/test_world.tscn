@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
 [ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/apple.tscn" id="7_v6f2a"]
-[ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/elexir.tscn" id="8_3asr3"]
+[ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/elixir.tscn" id="8_3asr3"]
 [ext_resource type="PackedScene" uid="uid://iakuwgs2abgm" path="res://scenes/coin.tscn" id="9_xxomm"]
 
 [node name="TestWorld" type="Node2D"]

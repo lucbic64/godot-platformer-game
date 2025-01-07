@@ -9,8 +9,18 @@ var gravity: float:
 	get():
 		return player_movement.jump_gravity if velocity.y < 0 else player_movement.fall_gravity
 
+func pickup_collected(type: Events.Pickups) -> void:
+	match type:
+		Events.Pickups.COIN:
+			print("Coin collected")
+		Events.Pickups.ELIXIR:
+			print("Elixir collected")
+		Events.Pickups.APPLE:
+			print("Apple collected")
+
 func _ready() -> void:
 	player_movement.calc_jump_values()
+	Events.pickup_collected.connect(pickup_collected)
 
 func _process(_delta: float) -> void:
 	check_floor_collision()
