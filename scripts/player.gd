@@ -17,34 +17,24 @@ func _process(_delta: float) -> void:
 
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
-		var map_position: Vector2i = tile_map.local_to_map(tile_map.to_local(global_position))
-		map_position.y += 2
+		var global_position_centered = global_position + Vector2(7, 11)
+		
+		var map_position: Vector2i = tile_map.local_to_map(tile_map.to_local(global_position_centered))
+		map_position.y += 1
+		
 		var tile_data: TileData = tile_map.get_cell_tile_data(map_position)
-		if tile_data:
-			match tile_data.get_custom_data("GroundProperties"):
-				1: print("slow")
-				2: print("damage")
-				3: print("slippery")
+		if not tile_data: return
+		#assert(tile_data, "Tile Data couldn't be fetched!")
+		
+		match tile_data.get_custom_data("GroundProperties"):
+			1: print("slow")
+			2: print("damage")
+			3: print("slippery")
 	else:
-		var bodies = floor_detection.get_overlapping_bodies()
-		bodies = bodies.filter(func(element):
-			return element.name.begins_with("MovingPlatform")
-		)
-		match bodies.size():
-			1:
-				var moving_platform = bodies[0]
-				check_moving_platform_type(moving_platform)
-			2:
-				for moving_platform in bodies:
-					check_moving_platform_type(moving_platform)
-
-func check_moving_platform_type(moving_platform: Node2D) -> void:
-	if "Blue" in moving_platform.name:
-		print("slippery")
-	elif "Brown" in moving_platform.name:
-		print("slow")
-	elif "Yellow" in moving_platform.name:
-		print("damage")
+		for moving_platform in floor_detection.get_overlapping_bodies():
+			if "Brown" in moving_platform.name: print("slow")
+			elif "Yellow" in moving_platform.name: print("damage")
+			elif "Blue" in moving_platform.name: print("slippery")
 
 func _physics_process(delta: float) -> void:
 	velocity.y += gravity * delta

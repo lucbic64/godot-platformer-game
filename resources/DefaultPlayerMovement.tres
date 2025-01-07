@@ -6,8 +6,8 @@
 script = ExtResource("1_xbq3y")
 max_speed = 75.0
 acceleration = 450.0
-friction = 7.5
-air_friction = 0.2
+friction = 10.0
+air_friction = 0.8
 jump_height = 25.0
 jump_peak = 0.25
 jump_descent = 0.3
