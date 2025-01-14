@@ -1,9 +1,10 @@
+class_name Player
 extends CharacterBody2D
 
 @export var player_movement: PlayerMovementData
 @export var tile_map: TileMapLayer
 
-@onready var animated_sprite = $PlayerSprite
+@onready var player_sprite = $PlayerSprite
 @onready var floor_detection = $FloorDetection
 @onready var state_machine = $StateMachine
 
@@ -19,7 +20,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
 
 func _physics_process(delta: float) -> void:
-	update_movement(delta)
 	state_machine.process_physics(delta)
 
 func _process(delta: float) -> void:
@@ -46,26 +46,3 @@ func check_floor_collision() -> void:
 			if "Brown" in moving_platform.name: print("slow")
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")
-
-func update_movement(delta: float) -> void:
-	velocity.y += gravity * delta
-	
-	var direction := Input.get_axis("left", "right")
-	
-	if direction:
-		velocity.x = move_toward(
-			velocity.x,
-			player_movement.max_speed * direction,
-			player_movement.acceleration * delta
-		)
-	else:
-		velocity.x = lerp(
-			velocity.x,
-			0.0,
-			(player_movement.friction if is_on_floor() else player_movement.air_friction) * delta
-		)
-
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = player_movement.jump_velocity
-	
-	move_and_slide()

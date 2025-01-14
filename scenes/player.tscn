@@ -1,8 +1,12 @@
-[gd_scene load_steps=47 format=3 uid="uid://21go3c47b0ob"]
+[gd_scene load_steps=51 format=3 uid="uid://21go3c47b0ob"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0wkak"]
 [ext_resource type="Texture2D" uid="uid://8825q1l8sjie" path="res://assets/brackeys_platformer_assets/sprites/knight.png" id="1_ngrly"]
 [ext_resource type="PackedScene" uid="uid://bdg1jjmjxaqmx" path="res://scenes/state_machine.tscn" id="3_1qvuw"]
+[ext_resource type="Script" path="res://scripts/states/idle.gd" id="4_6gvaq"]
+[ext_resource type="Script" path="res://scripts/states/jump.gd" id="5_0rbcb"]
+[ext_resource type="Script" path="res://scripts/states/fall.gd" id="6_qti24"]
+[ext_resource type="Script" path="res://scripts/states/run.gd" id="7_c1s77"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4oid"]
 atlas = ExtResource("1_ngrly")
@@ -232,7 +236,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 2.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -339,8 +343,8 @@ metadata/_edit_group_ = true
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(7, 6)
 sprite_frames = SubResource("SpriteFrames_kpwlh")
-animation = &"death"
-autoplay = "idle"
+animation = &"idle"
+frame_progress = 0.948548
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(7, 11)
@@ -354,4 +358,33 @@ collision_mask = 6
 position = Vector2(7, 18)
 shape = SubResource("RectangleShape2D_mrtgo")
 
-[node name="StateMachine" parent="." instance=ExtResource("3_1qvuw")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_1qvuw")]
+starting_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "jump_state", "run_state")]
+script = ExtResource("4_6gvaq")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+run_state = NodePath("../Run")
+animation_name = "idle"
+
+[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("fall_state", "idle_state", "run_state")]
+script = ExtResource("5_0rbcb")
+fall_state = NodePath("../Fall")
+idle_state = NodePath("../Idle")
+run_state = NodePath("../Run")
+animation_name = "jump"
+
+[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "jump_state", "run_state")]
+script = ExtResource("6_qti24")
+idle_state = NodePath("../Idle")
+jump_state = NodePath("../Jump")
+run_state = NodePath("../Run")
+animation_name = "jump"
+
+[node name="Run" type="Node" parent="StateMachine" node_paths=PackedStringArray("idle_state", "fall_state", "jump_state")]
+script = ExtResource("7_c1s77")
+idle_state = NodePath("../Idle")
+fall_state = NodePath("../Fall")
+jump_state = NodePath("../Jump")
+animation_name = "run"
