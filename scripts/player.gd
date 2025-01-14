@@ -8,10 +8,6 @@ extends CharacterBody2D
 @onready var floor_detection = $FloorDetection
 @onready var state_machine = $StateMachine
 
-var gravity: float:
-	get():
-		return player_movement.jump_gravity if velocity.y < 0 else player_movement.fall_gravity
-
 func _ready() -> void:
 	player_movement.calc_jump_values()
 	state_machine.init(self)
