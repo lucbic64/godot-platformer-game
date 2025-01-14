@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciclrsudtyad0"]
+
+[ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickups/pickup.tscn" id="1_yg5xb"]
+[ext_resource type="Script" path="res://scripts/pickups/apple.gd" id="2_saqkn"]
+[ext_resource type="Texture2D" uid="uid://x3ki5a5xoq2b" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="2_tfk5n"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1v13"]
+atlas = ExtResource("2_tfk5n")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2mew6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1v13")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Apple" instance=ExtResource("1_yg5xb")]
+script = ExtResource("2_saqkn")
+
+[node name="PickupShape" parent="." index="0"]
+polygon = PackedVector2Array(-5, 1, -5, 4, -2, 7, 2, 7, 5, 4, 5, 1, 2, -2, -2, -2)
+
+[node name="PickupSprite" parent="." index="1"]
+sprite_frames = SubResource("SpriteFrames_2mew6")

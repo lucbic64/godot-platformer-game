@@ -9,6 +9,7 @@ extends CharacterBody2D
 @onready var state_machine = $StateMachine
 
 func _ready() -> void:
+	Events.pickup_collected.connect(pickup_collected)
 	player_movement.calc_jump_values()
 	state_machine.init(self)
 
@@ -21,6 +22,15 @@ func _physics_process(delta: float) -> void:
 func _process(delta: float) -> void:
 	check_floor_collision()
 	state_machine.process_frame(delta)
+
+func pickup_collected(type: Events.Pickups) -> void:
+	match type:
+		Events.Pickups.COIN:
+			print("Coin collected")
+		Events.Pickups.ELIXIR:
+			print("Elixir collected")
+		Events.Pickups.APPLE:
+			print("Apple collected")
 
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
