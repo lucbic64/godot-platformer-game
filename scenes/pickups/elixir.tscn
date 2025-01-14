@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bo3o4xjhal68v"]
 
-[ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickup.tscn" id="1_uwer7"]
-[ext_resource type="Script" path="res://elixir.gd" id="2_xe05c"]
+[ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickups/pickup.tscn" id="1_uwer7"]
+[ext_resource type="Script" path="res://scripts/pickups/elixir.gd" id="2_xe05c"]
 [ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="3_ht1a4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w4v2c"]

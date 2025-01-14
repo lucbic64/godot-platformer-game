@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ciclrsudtyad0"]
 
-[ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickup.tscn" id="1_yg5xb"]
-[ext_resource type="Script" path="res://scenes/apple.gd" id="2_saqkn"]
+[ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickups/pickup.tscn" id="1_yg5xb"]
+[ext_resource type="Script" path="res://scripts/pickups/apple.gd" id="2_saqkn"]
 [ext_resource type="Texture2D" uid="uid://x3ki5a5xoq2b" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="2_tfk5n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r1v13"]
