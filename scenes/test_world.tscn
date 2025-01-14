@@ -42,6 +42,7 @@ position = Vector2(264, 0)
 position = Vector2(284, 115)
 speed = 75.0
 axis = "Y"
+metadata/_edit_group_ = true
 
 [node name="EndPosition" parent="MovingPlatformBlueSmall" index="3"]
 position = Vector2(0, -100)

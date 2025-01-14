@@ -346,7 +346,7 @@ sprite_frames = SubResource("SpriteFrames_kpwlh")
 animation = &"idle"
 frame_progress = 0.948548
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="PlayerShape" type="CollisionShape2D" parent="."]
 position = Vector2(7, 11)
 shape = SubResource("RectangleShape2D_0r1sa")
 
