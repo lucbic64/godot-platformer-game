@@ -1,9 +1,11 @@
 extends CharacterBody2D
 
 @export var player_movement: PlayerMovementData
+@export var tile_map: TileMapLayer
 
+@onready var animated_sprite = $PlayerSprite
 @onready var floor_detection = $FloorDetection
-@onready var tile_map = $"../LevelTileMap"
+@onready var state_machine = $StateMachine
 
 var gravity: float:
 	get():
@@ -11,9 +13,18 @@ var gravity: float:
 
 func _ready() -> void:
 	player_movement.calc_jump_values()
+	state_machine.init(self)
 
-func _process(_delta: float) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
+
+func _physics_process(delta: float) -> void:
+	update_movement(delta)
+	state_machine.process_physics(delta)
+
+func _process(delta: float) -> void:
 	check_floor_collision()
+	state_machine.process_frame(delta)
 
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
@@ -36,7 +47,7 @@ func check_floor_collision() -> void:
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")
 
-func _physics_process(delta: float) -> void:
+func update_movement(delta: float) -> void:
 	velocity.y += gravity * delta
 	
 	var direction := Input.get_axis("left", "right")
