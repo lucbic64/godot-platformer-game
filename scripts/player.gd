@@ -1,13 +1,27 @@
+class_name Player
 extends CharacterBody2D
 
 @export var player_movement: PlayerMovementData
+@export var tile_map: TileMapLayer
 
+@onready var player_sprite = $PlayerSprite
 @onready var floor_detection = $FloorDetection
-@onready var tile_map = $"../LevelTileMap"
+@onready var state_machine = $StateMachine
 
-var gravity: float:
-	get():
-		return player_movement.jump_gravity if velocity.y < 0 else player_movement.fall_gravity
+func _ready() -> void:
+	Events.pickup_collected.connect(pickup_collected)
+	player_movement.calc_jump_values()
+	state_machine.init(self)
+
+func _unhandled_input(event: InputEvent) -> void:
+	state_machine.process_input(event)
+
+func _physics_process(delta: float) -> void:
+	state_machine.process_physics(delta)
+
+func _process(delta: float) -> void:
+	check_floor_collision()
+	state_machine.process_frame(delta)
 
 func pickup_collected(type: Events.Pickups) -> void:
 	match type:
@@ -17,13 +31,6 @@ func pickup_collected(type: Events.Pickups) -> void:
 			print("Elixir collected")
 		Events.Pickups.APPLE:
 			print("Apple collected")
-
-func _ready() -> void:
-	player_movement.calc_jump_values()
-	Events.pickup_collected.connect(pickup_collected)
-
-func _process(_delta: float) -> void:
-	check_floor_collision()
 
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
@@ -45,26 +52,3 @@ func check_floor_collision() -> void:
 			if "Brown" in moving_platform.name: print("slow")
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")
-
-func _physics_process(delta: float) -> void:
-	velocity.y += gravity * delta
-	
-	var direction := Input.get_axis("left", "right")
-	
-	if direction:
-		velocity.x = move_toward(
-			velocity.x,
-			player_movement.max_speed * direction,
-			player_movement.acceleration * delta
-		)
-	else:
-		velocity.x = lerp(
-			velocity.x,
-			0.0,
-			(player_movement.friction if is_on_floor() else player_movement.air_friction) * delta
-		)
-
-	if is_on_floor() and Input.is_action_just_pressed("jump"):
-		velocity.y = player_movement.jump_velocity
-	
-	move_and_slide()
