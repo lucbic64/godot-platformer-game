@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ciclrsudtyad0"]
+[gd_scene load_steps=7 format=3 uid="uid://ciclrsudtyad0"]
 
 [ext_resource type="PackedScene" uid="uid://bp78vqjrhwjg7" path="res://scenes/pickups/pickup.tscn" id="1_yg5xb"]
 [ext_resource type="Script" path="res://scripts/pickups/apple.gd" id="2_saqkn"]
@@ -19,11 +19,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tjuha"]
+radius = 4.0
+
 [node name="Apple" instance=ExtResource("1_yg5xb")]
 script = ExtResource("2_saqkn")
 
-[node name="PickupShape" parent="." index="0"]
-polygon = PackedVector2Array(-5, 1, -5, 4, -2, 7, 2, 7, 5, 4, 5, 1, 2, -2, -2, -2)
-
-[node name="PickupSprite" parent="." index="1"]
+[node name="PickupSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_2mew6")
+
+[node name="DetectionShape" parent="." index="1"]
+position = Vector2(0, 3)
+shape = SubResource("CircleShape2D_tjuha")

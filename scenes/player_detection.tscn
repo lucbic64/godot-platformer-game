@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cllbeo3705r6b"]
+
+[node name="PlayerDetection" type="Area2D"]
+collision_layer = 0
+
+[node name="DetectionShape" type="CollisionShape2D" parent="."]

@@ -1,12 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bp78vqjrhwjg7"]
+[gd_scene load_steps=3 format=3 uid="uid://bp78vqjrhwjg7"]
 
+[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="1_blafd"]
 [ext_resource type="Script" path="res://scripts/pickups/pickup.gd" id="1_f0wil"]
 
-[node name="Pickup" type="Area2D"]
+[node name="Pickup" instance=ExtResource("1_blafd")]
 script = ExtResource("1_f0wil")
 
-[node name="PickupShape" type="CollisionPolygon2D" parent="."]
-
-[node name="PickupSprite" type="AnimatedSprite2D" parent="."]
+[node name="PickupSprite" type="AnimatedSprite2D" parent="." index="0"]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
