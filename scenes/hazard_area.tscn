@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cql4sbv35d412"]
+
+[node name="HazardArea" type="Area2D"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="DeathZone" type="CollisionShape2D" parent="."]

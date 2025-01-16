@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://durdgbi7owmpo"]
+
+[ext_resource type="PackedScene" uid="uid://cql4sbv35d412" path="res://scenes/hazard_area.tscn" id="1_reuwa"]
+
+[node name="Enemy" type="CharacterBody2D"]
+
+[node name="EnemyShape" type="CollisionShape2D" parent="."]
+
+[node name="EnemySprite" type="AnimatedSprite2D" parent="."]
+
+[node name="HazardArea" parent="." instance=ExtResource("1_reuwa")]
