@@ -48,7 +48,11 @@ func check_floor_collision() -> void:
 			2: print("damage")
 			3: print("slippery")
 	else:
-		for moving_platform in floor_detection.get_overlapping_bodies():
+		var moving_platforms = floor_detection.get_overlapping_bodies().filter(func(element):
+			return element.name.begins_with("MovingPlatform")
+		)
+		
+		for moving_platform in moving_platforms:
 			if "Brown" in moving_platform.name: print("slow")
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")

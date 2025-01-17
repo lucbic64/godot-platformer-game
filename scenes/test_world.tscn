@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=12 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
@@ -6,9 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
+[ext_resource type="PackedScene" uid="uid://wxe1xsidn2td" path="res://scenes/moving_platforms/moving_platform_green.tscn" id="7_c4e0w"]
 [ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/pickups/apple.tscn" id="7_v6f2a"]
 [ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/pickups/elixir.tscn" id="8_3asr3"]
 [ext_resource type="PackedScene" uid="uid://iakuwgs2abgm" path="res://scenes/pickups/coin.tscn" id="9_xxomm"]
+[ext_resource type="PackedScene" uid="uid://brq7r4p22krkb" path="res://scenes/surprise_blocks/surprise_block_brown.tscn" id="10_88hdw"]
 
 [node name="TestWorld" type="Node2D"]
 
@@ -47,15 +49,28 @@ metadata/_edit_group_ = true
 [node name="EndPosition" parent="MovingPlatformBlueSmall" index="3"]
 position = Vector2(0, -100)
 
+[node name="MovingPlatformGreen" parent="." instance=ExtResource("7_c4e0w")]
+position = Vector2(32, 107)
+speed = 50.0
+axis = "Y"
+metadata/_edit_group_ = true
+
+[node name="EndPosition" parent="MovingPlatformGreen" index="3"]
+position = Vector2(-1, -66)
+
 [node name="Apple" parent="." instance=ExtResource("7_v6f2a")]
-position = Vector2(251, 119)
+position = Vector2(248, 120)
 
 [node name="Elexir" parent="." instance=ExtResource("8_3asr3")]
 position = Vector2(200, 119)
 
 [node name="Coin" parent="." instance=ExtResource("9_xxomm")]
-position = Vector2(171, 119)
+position = Vector2(168, 122)
+
+[node name="SurpriseBlockBrown" parent="." instance=ExtResource("10_88hdw")]
+position = Vector2(96, 84)
 
 [editable path="MovingPlatformBrownSmall"]
 [editable path="MovingPlatformYellow"]
 [editable path="MovingPlatformBlueSmall"]
+[editable path="MovingPlatformGreen"]
