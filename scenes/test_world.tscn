@@ -1,22 +1,25 @@
-[gd_scene load_steps=11 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=15 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
 [ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/level_tile_map.tscn" id="3_l1pn1"]
-[ext_resource type="Resource" uid="uid://d2he5llnkc4n1" path="res://resources/DefaultPlayerData.tres" id="3_o4dcl"]
 [ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
+[ext_resource type="PackedScene" uid="uid://wxe1xsidn2td" path="res://scenes/moving_platforms/moving_platform_green.tscn" id="7_c4e0w"]
 [ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/pickups/apple.tscn" id="7_v6f2a"]
 [ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/pickups/elixir.tscn" id="8_3asr3"]
 [ext_resource type="PackedScene" uid="uid://iakuwgs2abgm" path="res://scenes/pickups/coin.tscn" id="9_xxomm"]
+[ext_resource type="PackedScene" uid="uid://brq7r4p22krkb" path="res://scenes/surprise_blocks/surprise_block_brown.tscn" id="10_88hdw"]
+[ext_resource type="PackedScene" uid="uid://csj8nfhq5i1hj" path="res://scenes/surprise_blocks/surprise_block_yellow.tscn" id="12_iefft"]
+[ext_resource type="PackedScene" uid="uid://d263b3bd7vn2t" path="res://scenes/surprise_blocks/surprise_block_red.tscn" id="13_c4vim"]
+[ext_resource type="PackedScene" uid="uid://ms3qx73y180m" path="res://scenes/surprise_blocks/surprise_block_blue.tscn" id="14_c18v2"]
 
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_ol4xw")]
 position = Vector2(158, 28)
 player_movement = ExtResource("2_3h4f3")
-player_data = ExtResource("3_o4dcl")
 tile_map = NodePath("../LevelTileMap")
 
 [node name="LevelTileMap" parent="." instance=ExtResource("3_l1pn1")]
@@ -49,15 +52,37 @@ metadata/_edit_group_ = true
 [node name="EndPosition" parent="MovingPlatformBlueSmall" index="3"]
 position = Vector2(0, -100)
 
+[node name="MovingPlatformGreen" parent="." instance=ExtResource("7_c4e0w")]
+position = Vector2(17, 106)
+speed = 50.0
+axis = "Y"
+metadata/_edit_group_ = true
+
+[node name="EndPosition" parent="MovingPlatformGreen" index="3"]
+position = Vector2(-1, -66)
+
 [node name="Apple" parent="." instance=ExtResource("7_v6f2a")]
-position = Vector2(251, 119)
+position = Vector2(248, 120)
 
 [node name="Elexir" parent="." instance=ExtResource("8_3asr3")]
 position = Vector2(200, 119)
 
 [node name="Coin" parent="." instance=ExtResource("9_xxomm")]
-position = Vector2(171, 119)
+position = Vector2(168, 122)
+
+[node name="SurpriseBlockBrown" parent="." instance=ExtResource("10_88hdw")]
+position = Vector2(100, 84)
+
+[node name="SurpriseBlockYellow" parent="." instance=ExtResource("12_iefft")]
+position = Vector2(118, 84)
+
+[node name="SurpriseBlockRed" parent="." instance=ExtResource("13_c4vim")]
+position = Vector2(82, 84)
+
+[node name="SurpriseBlockBlue" parent="." instance=ExtResource("14_c18v2")]
+position = Vector2(64, 84)
 
 [editable path="MovingPlatformBrownSmall"]
 [editable path="MovingPlatformYellow"]
 [editable path="MovingPlatformBlueSmall"]
+[editable path="MovingPlatformGreen"]

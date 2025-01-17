@@ -1,3 +1,4 @@
+class_name Jump
 extends State
 
 @export var fall_state: State

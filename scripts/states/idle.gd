@@ -1,3 +1,4 @@
+class_name Idle
 extends State
 
 @export var fall_state: State

@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 @export var player_movement: PlayerMovementData
-@export var player_data: PlayerData
 @export var tile_map: TileMapLayer
 
 @onready var player_sprite = $PlayerSprite
@@ -13,8 +12,6 @@ func _ready() -> void:
 	Events.pickup_collected.connect(pickup_collected)
 	player_movement.calc_jump_values()
 	state_machine.init(self)
-	player_data.health = player_data.start_health
-	player_data.lives = player_data.start_lives
 
 func _unhandled_input(event: InputEvent) -> void:
 	state_machine.process_input(event)
@@ -51,22 +48,11 @@ func check_floor_collision() -> void:
 			2: print("damage")
 			3: print("slippery")
 	else:
-		for moving_platform in floor_detection.get_overlapping_bodies():
+		var moving_platforms = floor_detection.get_overlapping_bodies().filter(func(element):
+			return element.name.begins_with("MovingPlatform")
+		)
+		
+		for moving_platform in moving_platforms:
 			if "Brown" in moving_platform.name: print("slow")
 			elif "Yellow" in moving_platform.name: print("damage")
 			elif "Blue" in moving_platform.name: print("slippery")
-
-func heal(hp: int) -> void:
-	if player_data.health = player_data.max_health:
-		return
-	else:
-		player_data.health = mini(player_data.health + hp, player_data.max_health)
-	print(player_data.health)
-
-func damage(hp: int) -> void:
-	#print(player_data.health)
-	player_data.health -= hp
-	if player_data.health <= 0:
-		player_data.lives = player_data.lives - 1 # Provisional implementation
-		print(player_data.lives)
-		player_data.health = 100

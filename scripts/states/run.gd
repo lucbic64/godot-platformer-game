@@ -1,3 +1,4 @@
+class_name Run
 extends State
 
 @export var idle_state: State
