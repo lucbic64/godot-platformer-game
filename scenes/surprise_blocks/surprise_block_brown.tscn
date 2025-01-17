@@ -13,6 +13,7 @@ size = Vector2(16, 6)
 [node name="SurpriseBlockBrown" type="StaticBody2D"]
 collision_layer = 4
 script = ExtResource("1_uvxjk")
+activated_img = Vector2(16, 0)
 metadata/_edit_group_ = true
 
 [node name="BlockShape" type="CollisionShape2D" parent="."]

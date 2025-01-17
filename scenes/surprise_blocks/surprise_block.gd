@@ -1,5 +1,7 @@
 extends StaticBody2D
 
+@export var activated_img: Vector2
+
 @onready var player_detection = $PlayerDetection
 @onready var coin = preload("res://scenes/pickups/coin.tscn")
 @onready var elixir = preload("res://scenes/pickups/elixir.tscn")
@@ -20,4 +22,5 @@ func activate_block() -> void:
 	
 	object.position = Vector2(8, -8)
 	
+	$BlockSprite.region_rect.position += activated_img
 	activated = true
