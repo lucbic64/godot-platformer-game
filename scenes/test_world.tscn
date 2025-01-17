@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=11 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
 [ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/level_tile_map.tscn" id="3_l1pn1"]
+[ext_resource type="Resource" uid="uid://d2he5llnkc4n1" path="res://resources/DefaultPlayerData.tres" id="3_o4dcl"]
 [ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
 [ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
@@ -15,6 +16,7 @@
 [node name="Player" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_ol4xw")]
 position = Vector2(158, 28)
 player_movement = ExtResource("2_3h4f3")
+player_data = ExtResource("3_o4dcl")
 tile_map = NodePath("../LevelTileMap")
 
 [node name="LevelTileMap" parent="." instance=ExtResource("3_l1pn1")]
