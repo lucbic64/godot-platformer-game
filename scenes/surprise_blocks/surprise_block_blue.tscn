@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://brq7r4p22krkb"]
+[gd_scene load_steps=6 format=3 uid="uid://ms3qx73y180m"]
 
-[ext_resource type="Script" path="res://scripts/surprise_block.gd" id="1_uvxjk"]
-[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_vy0dh"]
-[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="2_nthpr"]
+[ext_resource type="Script" path="res://scripts/surprise_block.gd" id="1_pynpt"]
+[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="2_4iajo"]
+[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="3_i3msf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t21vb"]
 size = Vector2(16, 16)
@@ -10,9 +10,9 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vgtw"]
 size = Vector2(16, 6)
 
-[node name="SurpriseBlockBrown" type="StaticBody2D"]
+[node name="SurpriseBlockBlue" type="StaticBody2D"]
 collision_layer = 4
-script = ExtResource("1_uvxjk")
+script = ExtResource("1_pynpt")
 activated_img = Vector2(16, 0)
 metadata/_edit_group_ = true
 
@@ -22,11 +22,11 @@ shape = SubResource("RectangleShape2D_t21vb")
 
 [node name="BlockSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
-texture = ExtResource("1_vy0dh")
+texture = ExtResource("2_4iajo")
 region_enabled = true
-region_rect = Rect2(0, 32, 16, 16)
+region_rect = Rect2(112, 32, 16, 16)
 
-[node name="PlayerDetection" parent="." instance=ExtResource("2_nthpr")]
+[node name="PlayerDetection" parent="." instance=ExtResource("3_i3msf")]
 
 [node name="DetectionShape" parent="PlayerDetection" index="0"]
 position = Vector2(8, 17)
