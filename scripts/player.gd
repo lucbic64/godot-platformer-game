@@ -60,10 +60,7 @@ func heal(hp: int) -> void:
 	if player_data.health = player_data.max_health:
 		return
 	else:
-		if(player_data.health + hp >= 100):
-			player_data.health = 100
-		else:
-			player_data.health += hp
+		player_data.health = mini(player_data.health + hp, player_data.max_health)
 	print(player_data.health)
 
 func damage(hp: int) -> void:
