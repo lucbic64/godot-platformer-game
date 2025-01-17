@@ -53,7 +53,7 @@ metadata/_edit_group_ = true
 position = Vector2(0, -100)
 
 [node name="MovingPlatformGreen" parent="." instance=ExtResource("7_c4e0w")]
-position = Vector2(16, 113)
+position = Vector2(17, 106)
 speed = 50.0
 axis = "Y"
 metadata/_edit_group_ = true
