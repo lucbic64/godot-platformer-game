@@ -66,7 +66,7 @@ func heal(hp: int) -> void:
 func damage(hp: int) -> void:
 	#print(player_data.health)
 	player_data.health -= hp
-	if(player_data.health <= 0):
+	if player_data.health <= 0:
 		player_data.lives = player_data.lives - 1 # Provisional implementation
 		print(player_data.lives)
 		player_data.health = 100
