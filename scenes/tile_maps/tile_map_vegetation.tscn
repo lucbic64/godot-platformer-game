@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://s33rdcm2evey"]
+
+[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_xoeb6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fr47j"]
+texture = ExtResource("1_xoeb6")
+0:3/0 = 0
+1:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+3:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+2:8/0 = 0
+3:8/0 = 0
+4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -0.125, -2.75, -3.25, 3, -3.25, 8, 0.25, 8, 5.25, 5.5, 8, -5.25, 8, -8, 5.5)
+5:8/0 = 0
+6:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_qopg1"]
+physics_layer_0/collision_layer = 8
+sources/0 = SubResource("TileSetAtlasSource_fr47j")
+
+[node name="LevelTilesVegetation" type="TileMapLayer"]
+tile_set = SubResource("TileSet_qopg1")

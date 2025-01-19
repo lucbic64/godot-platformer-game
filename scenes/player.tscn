@@ -336,7 +336,8 @@ size = Vector2(10, 14)
 size = Vector2(10, 4)
 
 [node name="Player" type="CharacterBody2D"]
-collision_mask = 6
+z_index = 1
+collision_mask = 14
 script = ExtResource("1_0wkak")
 metadata/_edit_group_ = true
 
