@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://wkko2xfu2bdk"]
+
+[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_b2sfv"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c6qmt"]
+texture = ExtResource("1_b2sfv")
+0:9/0 = 0
+0:9/0/z_index = -1
+1:9/0 = 0
+1:9/0/z_index = -1
+2:9/0 = 0
+2:9/0/z_index = -1
+3:9/0 = 0
+3:9/0/z_index = -1
+0:10/0 = 0
+0:10/0/z_index = -1
+1:10/0 = 0
+1:10/0/z_index = -1
+2:10/0 = 0
+2:10/0/z_index = -1
+3:10/0 = 0
+3:10/0/z_index = -1
+0:11/0 = 0
+0:11/0/z_index = -1
+1:11/0 = 0
+1:11/0/z_index = -1
+2:11/0 = 0
+2:11/0/z_index = -1
+3:11/0 = 0
+3:11/0/z_index = -1
+0:12/0 = 0
+0:12/0/z_index = -1
+1:12/0 = 0
+1:12/0/z_index = -1
+2:12/0 = 0
+2:12/0/z_index = -1
+3:12/0 = 0
+3:12/0/z_index = -1
+0:13/0 = 0
+0:13/0/z_index = -1
+1:13/0 = 0
+1:13/0/z_index = -1
+2:13/0 = 0
+2:13/0/z_index = -1
+3:13/0 = 0
+3:13/0/z_index = -1
+0:14/0 = 0
+0:14/0/z_index = -1
+1:14/0 = 0
+1:14/0/z_index = -1
+2:14/0 = 0
+2:14/0/z_index = -1
+3:14/0 = 0
+3:14/0/z_index = -1
+0:15/0 = 0
+0:15/0/z_index = -1
+1:15/0 = 0
+1:15/0/z_index = -1
+2:15/0 = 0
+2:15/0/z_index = -1
+3:15/0 = 0
+3:15/0/z_index = -1
+
+[sub_resource type="TileSet" id="TileSet_o3slw"]
+sources/0 = SubResource("TileSetAtlasSource_c6qmt")
+
+[node name="LevelTilesBackground" type="TileMapLayer"]
+tile_set = SubResource("TileSet_o3slw")
