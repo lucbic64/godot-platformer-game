@@ -17,6 +17,7 @@
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_ol4xw")]
+position = Vector2(160, 30)
 player_movement = ExtResource("2_3h4f3")
 player_data = ExtResource("3_o4dcl")
 tile_map = NodePath("../TileMaps/LevelTilesDefault")
