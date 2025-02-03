@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=19 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
 [ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/tile_maps/tile_map_default.tscn" id="3_l1pn1"]
+[ext_resource type="Resource" path="res://resources/DefaultPlayerData.tres" id="3_o4dcl"]
 [ext_resource type="PackedScene" uid="uid://s33rdcm2evey" path="res://scenes/tile_maps/tile_map_vegetation.tscn" id="4_m7p2u"]
-[ext_resource type="Resource" uid="uid://d2he5llnkc4n1" path="res://resources/DefaultPlayerData.tres" id="3_o4dcl"]
 [ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
 [ext_resource type="PackedScene" uid="uid://wkko2xfu2bdk" path="res://scenes/tile_maps/tile_map_background.tscn" id="5_ml4lu"]
 [ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
@@ -24,8 +24,8 @@
 [node name="Player" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_ol4xw")]
 position = Vector2(158, 28)
 player_movement = ExtResource("2_3h4f3")
-tile_map = NodePath("../TileMaps/LevelTilesDefault")
 player_data = ExtResource("3_o4dcl")
+tile_map = NodePath("../TileMaps/LevelTilesDefault")
 
 [node name="TileMaps" type="Node" parent="."]
 

@@ -61,7 +61,7 @@ func check_floor_collision() -> void:
 			elif "Blue" in moving_platform.name: print("slippery")
 
 func heal(hp: int) -> void:
-	if player_data.health = player_data.max_health:
+	if player_data.health == player_data.max_health:
 		return
 	else:
 		player_data.health = mini(player_data.health + hp, player_data.max_health)
