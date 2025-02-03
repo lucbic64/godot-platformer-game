@@ -10,10 +10,9 @@ size = Vector2(16, 16)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vgtw"]
 size = Vector2(16, 6)
 
-[node name="SurpriseBlockBrown" type="StaticBody2D"]
+[node name="SurpriseBlock" type="StaticBody2D"]
 collision_layer = 4
 script = ExtResource("1_uvxjk")
-activated_img = Vector2(16, 0)
 metadata/_edit_group_ = true
 
 [node name="BlockShape" type="CollisionShape2D" parent="."]
@@ -24,7 +23,7 @@ shape = SubResource("RectangleShape2D_t21vb")
 position = Vector2(8, 8)
 texture = ExtResource("1_vy0dh")
 region_enabled = true
-region_rect = Rect2(0, 32, 16, 16)
+region_rect = Rect2(112, 32, 16, 16)
 
 [node name="PlayerDetection" parent="." instance=ExtResource("2_nthpr")]
 
