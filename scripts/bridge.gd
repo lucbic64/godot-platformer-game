@@ -5,6 +5,7 @@ extends Node2D
 @export var instable: bool:
 	set(value):
 		instable = value
+		$GPUParticles2D.emitting = value
 		notify_property_list_changed()
 
 ## The total time the player has to be on the bridge to make it collapse (Default: 0.2)
@@ -16,16 +17,21 @@ var collapse_order: int # exported if instable
 
 @onready var player_detection = $PlayerDetection
 @onready var collapse_timer = $CollapseTimer
+@onready var particles = $GPUParticles2D
 @onready var left_part = $Left
 @onready var mid_part = $Mid
 @onready var right_part = $Right
 
-var _region_positions := [Vector2(144, 0), Vector2(144, 16), Vector2(144, 32)] # Brown, Yellow, Red
+# Brown, Yellow, Red
+var _region_positions := [Vector2(144, 0), Vector2(144, 16), Vector2(144, 32)]
+var _particle_colors := [Color(0.714, 0.42, 0.227), Color(0.765, 0.667, 0.514), Color(0.71, 0.42, 0.373)]
 
 var collapsed = false
 
 func _set_color(new_color: int) -> void:
 	color = new_color
+	
+	particles.modulate = _particle_colors[color]
 	
 	%BridgeSpriteLeft.region_rect.position = _region_positions[color]
 	%BridgeSpriteMid.region_rect.position = _region_positions[color] + Vector2(16, 0)
@@ -77,6 +83,7 @@ func _process(_delta: float) -> void:
 
 func collapse() -> void:
 	collapsed = true
+	particles.emitting = false
 	
 	if collapse_order:
 		right_part.freeze = false

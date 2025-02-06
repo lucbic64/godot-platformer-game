@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://can0ot5a7gtgi"]
+[gd_scene load_steps=8 format=3 uid="uid://can0ot5a7gtgi"]
 
 [ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_g8hby"]
 [ext_resource type="Script" path="res://scripts/bridge.gd" id="1_vvw46"]
@@ -7,8 +7,41 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_76vh5"]
 size = Vector2(48, 9.5)
 
+[sub_resource type="Gradient" id="Gradient_ktrem"]
+offsets = PackedFloat32Array(0.559322, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_261hb"]
+gradient = SubResource("Gradient_ktrem")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxgjv"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -125.2
+angle_max = 250.4
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 30, 0)
+scale_min = 1.5
+scale_max = 1.9
+color_ramp = SubResource("GradientTexture1D_261hb")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 9.6
+
 [node name="Bridge" type="Node2D"]
 script = ExtResource("1_vvw46")
+
+[node name="PlayerDetection" parent="." instance=ExtResource("3_2vxqr")]
+metadata/_edit_lock_ = true
+
+[node name="DetectionShape" parent="PlayerDetection" index="0"]
+position = Vector2(24, 4.75)
+shape = SubResource("RectangleShape2D_76vh5")
 
 [node name="Left" type="RigidBody2D" parent="."]
 collision_layer = 16
@@ -63,15 +96,15 @@ texture = ExtResource("1_g8hby")
 region_enabled = true
 region_rect = Rect2(176, 0, 16, 9)
 
-[node name="PlayerDetection" parent="." instance=ExtResource("3_2vxqr")]
-metadata/_edit_lock_ = true
-
-[node name="DetectionShape" parent="PlayerDetection" index="0"]
-position = Vector2(24, 4.75)
-shape = SubResource("RectangleShape2D_76vh5")
-
 [node name="CollapseTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.714, 0.42, 0.227, 1)
+position = Vector2(24, 5)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kxgjv")
+lifetime = 7.0
 
 [connection signal="timeout" from="CollapseTimer" to="." method="collapse"]
 
