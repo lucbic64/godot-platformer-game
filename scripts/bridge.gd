@@ -18,6 +18,8 @@ var collapse_order: int # exported if instable
 @onready var player_detection = $PlayerDetection
 @onready var collapse_timer = $CollapseTimer
 @onready var particles = $GPUParticles2D
+@onready var animation_player = $AnimationPlayer
+
 @onready var left_part = $Left
 @onready var mid_part = $Mid
 @onready var right_part = $Right
@@ -31,7 +33,7 @@ var collapsed = false
 func _set_color(new_color: int) -> void:
 	color = new_color
 	
-	particles.modulate = _particle_colors[color]
+	$GPUParticles2D.modulate = _particle_colors[color]
 	
 	%BridgeSpriteLeft.region_rect.position = _region_positions[color]
 	%BridgeSpriteMid.region_rect.position = _region_positions[color] + Vector2(16, 0)
@@ -97,3 +99,8 @@ func collapse() -> void:
 		mid_part.freeze = false
 		await get_tree().create_timer(fall_delay).timeout
 		right_part.freeze = false
+	
+	await get_tree().create_timer(5.0).timeout
+	animation_player.play("fade")
+	await animation_player.animation_finished
+	queue_free()
