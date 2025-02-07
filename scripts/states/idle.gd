@@ -22,7 +22,6 @@ func process_physics(delta: float) -> State:
 			0.0,
 			parent.player_movement.friction * delta
 		)
-		print(parent.player_movement.friction)
 	
 	parent.move_and_slide()
 	
