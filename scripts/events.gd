@@ -6,3 +6,4 @@ enum Pickups {APPLE, ELIXIR, COIN}
 @warning_ignore("unused_signal")
 signal pickup_collected(type: Pickups)
 signal checkpoint_reached
+signal player_died(player: Player)

@@ -11,7 +11,6 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	Events.pickup_collected.connect(pickup_collected)
-	Events.checkpoint_reached.connect(checkpoint_reached)
 	player_movement.calc_jump_values()
 	state_machine.init(self)
 	player_data.health = player_data.start_health
@@ -36,9 +35,6 @@ func pickup_collected(type: Events.Pickups) -> void:
 		Events.Pickups.APPLE:
 			print("Apple collected")
 
-func checkpoint_reached() -> void:
-	print("Checkpoint reached")
-
 func check_floor_collision() -> void:
 	if floor_detection.overlaps_body(tile_map):
 		var global_position_centered = global_position + Vector2(7, 11)
@@ -52,7 +48,7 @@ func check_floor_collision() -> void:
 		
 		match tile_data.get_custom_data("GroundProperties"):
 			1: print("slow")
-			2: print("damage")
+			2: damage(1)
 			3: print("slippery")
 	else:
 		for moving_platform in floor_detection.get_overlapping_bodies():
@@ -69,5 +65,11 @@ func heal(hp: int) -> void:
 func damage(hp: int) -> void:
 	player_data.health -= hp
 	if player_data.health <= 0:
-		player_data.lives = player_data.lives - 1 # Provisional implementation
+		player_data.lives = player_data.lives - 1
+		death() # Provisional implementation
 		player_data.health = 100
+
+func death() -> void:
+	print(player_data.lives)
+	if player_data.lives < 1:
+		Events.player_died.emit(self)
