@@ -52,13 +52,14 @@ func check_floor_collision() -> void:
 			3: print("slippery")
 	else:
 		var moving_platforms = floor_detection.get_overlapping_bodies().filter(func(element):
-			return element.name.begins_with("MovingPlatform")
-		)
+			return element is MovingPlatform
+		) as Array[MovingPlatform]
 		
 		for moving_platform in moving_platforms:
-			if "Brown" in moving_platform.name: print("slow")
-			elif "Yellow" in moving_platform.name: print("damage")
-			elif "Blue" in moving_platform.name: print("slippery")
+			match moving_platform.color:
+				1: print("slow")
+				3: print("damage")
+				0: print("slippery")
 
 func heal(hp: int) -> void:
 	if player_data.health == player_data.max_health:
