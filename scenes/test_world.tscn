@@ -1,87 +1,174 @@
-[gd_scene load_steps=14 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=16 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
-[ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/level_tile_map.tscn" id="3_l1pn1"]
+[ext_resource type="PackedScene" uid="uid://brgf5arkapipw" path="res://scenes/tile_maps/tile_map_default.tscn" id="3_l1pn1"]
 [ext_resource type="Resource" uid="uid://d2he5llnkc4n1" path="res://resources/DefaultPlayerData.tres" id="3_o4dcl"]
-[ext_resource type="PackedScene" uid="uid://dbtfbq1q7bxf3" path="res://scenes/moving_platforms/moving_platform_brown_small.tscn" id="4_noaio"]
-[ext_resource type="PackedScene" uid="uid://ccuiuxb7y3euk" path="res://scenes/moving_platforms/moving_platform_yellow.tscn" id="5_yqwhm"]
-[ext_resource type="PackedScene" uid="uid://dwqfig6btxb7c" path="res://scenes/moving_platforms/moving_platform_blue_small.tscn" id="6_ut5mc"]
+[ext_resource type="PackedScene" uid="uid://s33rdcm2evey" path="res://scenes/tile_maps/tile_map_vegetation.tscn" id="4_m7p2u"]
+[ext_resource type="PackedScene" uid="uid://wkko2xfu2bdk" path="res://scenes/tile_maps/tile_map_background.tscn" id="5_ml4lu"]
+[ext_resource type="PackedScene" uid="uid://q5cem4kqacyc" path="res://scenes/tile_maps/tile_map_ocean.tscn" id="6_7cpy2"]
 [ext_resource type="PackedScene" uid="uid://ciclrsudtyad0" path="res://scenes/pickups/apple.tscn" id="7_v6f2a"]
 [ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/pickups/elixir.tscn" id="8_3asr3"]
+[ext_resource type="Shape2D" uid="uid://dd2kqx1sthx5j" path="res://resources/moving_platforms/small_shape.tres" id="8_cgukj"]
+[ext_resource type="PackedScene" uid="uid://csels3yvo0y0l" path="res://scenes/moving_platform.tscn" id="9_h41bq"]
 [ext_resource type="PackedScene" uid="uid://iakuwgs2abgm" path="res://scenes/pickups/coin.tscn" id="9_xxomm"]
-[ext_resource type="PackedScene" uid="uid://csa6fbuddpq7b" path="res://scenes/checkpoint_area.tscn" id="11_8y202"]
-[ext_resource type="PackedScene" uid="uid://dmc04qixmpfkv" path="res://scenes/lower_world_boundary.tscn" id="12_dii0p"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_41jug"]
-size = Vector2(6, 66)
+[ext_resource type="PackedScene" uid="uid://brq7r4p22krkb" path="res://scenes/surprise_block.tscn" id="10_88hdw"]
+[ext_resource type="PackedScene" uid="uid://can0ot5a7gtgi" path="res://scenes/bridge.tscn" id="14_p0ito"]
+[ext_resource type="PackedScene" uid="uid://0fxfkodeujeh" path="res://scenes/ladder.tscn" id="15_jdqw2"]
 
 [node name="TestWorld" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("tile_map") instance=ExtResource("1_ol4xw")]
-position = Vector2(158, 28)
+position = Vector2(160, 30)
 player_movement = ExtResource("2_3h4f3")
 player_data = ExtResource("3_o4dcl")
-tile_map = NodePath("../LevelTileMap")
+tile_map = NodePath("../TileMaps/LevelTilesDefault")
 
-[node name="LevelTileMap" parent="." instance=ExtResource("3_l1pn1")]
-tile_map_data = PackedByteArray("AAAAAAsAAAAFAAAAAAABAAsAAAAEAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAABAAEAAAAGAAsAAAAAAAEAAAAHAAsAAAAAAAEAAAAIAAsAAAAAAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAABAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAADAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAGAAoAAAAAAAEAAAAHAAoAAAAAAAEAAAAIAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAAQAAkAAAABAAEAAAARAAkAAAACAAEAAAASAAkAAAADAAAAAAASAAoAAAACAAEAAAATAAoAAAACAAEAAAAAAAkAAAAEAAEAAAAAAAoAAAAEAAEAAAABAAkAAAAFAAAAAAABAAoAAAAFAAEAAAACAAkAAAAAAAEAAAACAAoAAAAEAAEAAAADAAkAAAAEAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAGAAkAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAABAAAAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAABAAAAAAATAAkAAAADAAEAAAAAAAgAAAAEAAAAAAABAAgAAAAEAAAAAAACAAgAAAAEAAAAAAADAAgAAAAEAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAACAAAAAAARAAgAAAACAAAAAAASAAgAAAACAAAAAAATAAgAAAACAAAAAAARAAEAAAACAAAAAAA=")
+[node name="TileMaps" type="Node" parent="."]
 
-[node name="MovingPlatformBrownSmall" parent="." instance=ExtResource("4_noaio")]
-position = Vector2(300, 115)
-speed = 75.0
-axis = "Y"
-metadata/_edit_group_ = true
+[node name="LevelTilesDefault" parent="TileMaps" instance=ExtResource("3_l1pn1")]
+tile_map_data = PackedByteArray("AAAAAAsAAAAFAAAAAAABAAsAAAAEAAEAAAACAAsAAAAAAAEAAAADAAsAAAAAAAEAAAAEAAsAAAAAAAEAAAAFAAsAAAABAAEAAAAJAAsAAAAAAAEAAAAKAAsAAAAAAAEAAAALAAsAAAABAAEAAAAMAAsAAAAAAAEAAAANAAsAAAAAAAEAAAAOAAsAAAAAAAEAAAAPAAsAAAAAAAEAAAAQAAsAAAAAAAEAAAARAAsAAAAAAAEAAAASAAsAAAAAAAEAAAATAAsAAAADAAEAAAADAAoAAAAAAAEAAAAEAAoAAAAAAAEAAAAFAAoAAAAAAAEAAAAJAAoAAAAAAAEAAAAKAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAMAAkAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAPAAkAAAAAAAEAAAAQAAkAAAABAAEAAAARAAkAAAACAAEAAAASAAkAAAADAAAAAAASAAoAAAACAAEAAAATAAoAAAACAAEAAAAAAAkAAAAEAAEAAAAAAAoAAAAEAAEAAAABAAkAAAAFAAAAAAABAAoAAAAFAAEAAAACAAkAAAAAAAEAAAACAAoAAAAEAAEAAAADAAkAAAAEAAEAAAAEAAkAAAAAAAEAAAAFAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAoAAAAAAAEAAAALAAoAAAAAAAEAAAAMAAoAAAAAAAEAAAANAAoAAAABAAAAAAAOAAoAAAAAAAEAAAAPAAoAAAAAAAEAAAAQAAoAAAAAAAEAAAARAAoAAAABAAAAAAATAAkAAAADAAEAAAAAAAgAAAAEAAAAAAABAAgAAAAEAAAAAAACAAgAAAAEAAAAAAADAAgAAAAEAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAACAAAAAAARAAgAAAACAAAAAAASAAgAAAACAAAAAAATAAgAAAACAAAAAAARAAEAAAACAAAAAAANAAEAAAADAAAAAAA=")
+metadata/_edit_lock_ = true
 
-[node name="EndPosition" parent="MovingPlatformBrownSmall" index="3"]
-position = Vector2(0, -100)
+[node name="LevelTilesVegetation" parent="TileMaps" instance=ExtResource("4_m7p2u")]
+tile_map_data = PackedByteArray("AAANAAUAAAAAAAMAAAANAAYAAAAAAAQAAAANAAcAAAAAAAUAAAAAAAcAAAAFAAcAAAACAAcAAAAFAAgAAAAQAAcAAAADAAgAAAAQAAYAAAADAAcAAAAPAAMAAAACAAQAAAAPAAQAAAACAAUAAAAPAAUAAAACAAYAAAAQAAMAAAADAAQAAAAQAAQAAAADAAUAAAAQAAUAAAADAAYAAAARAAMAAAAEAAQAAAARAAQAAAAEAAUAAAARAAUAAAAEAAYAAAALAAcAAAAEAAgAAAA=")
+metadata/_edit_lock_ = true
 
-[node name="MovingPlatformYellow" parent="." instance=ExtResource("5_yqwhm")]
+[node name="LevelTilesBackground" parent="TileMaps" instance=ExtResource("5_ml4lu")]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAkAAAABAAAAAAAAAAkAAAACAAAAAAAAAAkAAAADAAAAAAAAAAkAAAAEAAAAAAAAAAkAAAAFAAAAAAAAAAkAAAAGAAAAAAAAAAkAAAAHAAAAAAAAAAkAAAAIAAAAAAAAAAkAAAAJAAAAAAAAAAkAAAAKAAAAAAAAAAkAAAALAAAAAAAAAAkAAAAMAAAAAAAAAAkAAAANAAAAAAAAAAkAAAAOAAAAAAAAAAkAAAAPAAAAAAAAAAkAAAAQAAAAAAAAAAkAAAARAAAAAAAAAAkAAAASAAAAAAAAAAkAAAATAAAAAAAAAAkAAAASAAEAAAAAAAkAAAARAAEAAAAAAAkAAAAQAAEAAAAAAAkAAAAPAAEAAAAAAAkAAAAOAAEAAAAAAAoAAAANAAEAAAAAAAoAAAAMAAEAAAAAAAoAAAALAAEAAAAAAAoAAAAKAAEAAAAAAAoAAAAJAAEAAAAAAAoAAAAIAAEAAAAAAAoAAAAHAAEAAAAAAAoAAAAGAAEAAAAAAAoAAAAFAAEAAAAAAAkAAAAEAAEAAAAAAAkAAAADAAEAAAAAAAkAAAACAAEAAAAAAAkAAAABAAEAAAAAAAkAAAAAAAEAAAAAAAkAAAATAAEAAAAAAAkAAAAAAAIAAAAAAAoAAAABAAIAAAAAAAoAAAACAAIAAAAAAAoAAAADAAIAAAAAAAoAAAAEAAIAAAAAAAoAAAAFAAIAAAAAAAoAAAAPAAIAAAAAAAoAAAAQAAIAAAAAAAoAAAARAAIAAAAAAAoAAAASAAIAAAAAAAoAAAATAAIAAAAAAAoAAAAAAAMAAAAAAAsAAAABAAMAAAAAAAsAAAACAAMAAAAAAAsAAAADAAMAAAAAAAsAAAAEAAMAAAAAAAsAAAAFAAMAAAAAAAsAAAAGAAMAAAAAAAsAAAAHAAMAAAAAAAwAAAAIAAMAAAAAAAwAAAAJAAMAAAAAAAwAAAAKAAMAAAAAAAwAAAALAAMAAAAAAAwAAAAMAAMAAAAAAAwAAAAPAAMAAAAAAAsAAAAQAAMAAAAAAAsAAAARAAMAAAAAAAsAAAASAAMAAAAAAAsAAAATAAMAAAAAAAsAAAAOAAIAAAAAAAsAAAANAAIAAAAAAAsAAAAMAAIAAAAAAAsAAAALAAIAAAAAAAsAAAAKAAIAAAAAAAsAAAAJAAIAAAAAAAsAAAAIAAIAAAAAAAsAAAAHAAIAAAAAAAsAAAAGAAIAAAAAAAsAAAAAAAQAAAAAAAwAAAABAAQAAAAAAAwAAAACAAQAAAAAAAwAAAADAAQAAAAAAAwAAAAEAAQAAAAAAAwAAAAFAAQAAAAAAAwAAAAGAAQAAAAAAAwAAAAPAAQAAAAAAAwAAAAQAAQAAAAAAAwAAAARAAQAAAAAAAwAAAASAAQAAAAAAAwAAAATAAQAAAAAAAwAAAAOAAQAAAAAAAwAAAANAAQAAAAAAAwAAAAOAAMAAAAAAAsAAAANAAMAAAAAAAsAAAAAAAUAAAAAAA0AAAABAAUAAAAAAA0AAAACAAUAAAAAAA0AAAADAAUAAAAAAA0AAAAEAAUAAAAAAA0AAAAFAAUAAAAAAA0AAAAGAAUAAAAAAA0AAAAHAAUAAAAAAA0AAAAIAAUAAAAAAA0AAAAJAAUAAAAAAA0AAAAKAAUAAAAAAA0AAAALAAUAAAAAAA0AAAAMAAUAAAAAAA0AAAANAAUAAAAAAA0AAAAOAAUAAAAAAA0AAAAPAAUAAAAAAA0AAAAQAAUAAAAAAA0AAAARAAUAAAAAAA0AAAASAAUAAAAAAA0AAAATAAUAAAAAAA0AAAAHAAQAAAAAAA0AAAAIAAQAAAAAAA0AAAAJAAQAAAAAAA0AAAAKAAQAAAAAAA0AAAALAAQAAAAAAA0AAAAMAAQAAAAAAA0AAAAAAAYAAAAAAA0AAAABAAYAAAAAAA0AAAACAAYAAAAAAA0AAAADAAYAAAAAAA0AAAAEAAYAAAAAAA0AAAAFAAYAAAAAAA0AAAAGAAYAAAAAAA0AAAAHAAYAAAAAAA0AAAAIAAYAAAAAAA0AAAAJAAYAAAAAAA0AAAAKAAYAAAAAAA0AAAALAAYAAAAAAA0AAAAMAAYAAAAAAA0AAAANAAYAAAAAAA0AAAAOAAYAAAAAAA0AAAAPAAYAAAAAAA0AAAAQAAYAAAAAAA0AAAARAAYAAAAAAA0AAAARAAcAAAAAAA4AAAASAAcAAAAAAA4AAAATAAcAAAAAAA4AAAATAAYAAAAAAA0AAAASAAYAAAAAAA0AAAAQAAcAAAAAAA4AAAAPAAcAAAAAAA4AAAAOAAcAAAAAAA4AAAANAAcAAAAAAA4AAAAMAAcAAAAAAA4AAAALAAcAAAAAAA4AAAAKAAcAAAAAAA4AAAAJAAcAAAAAAA0AAAAIAAcAAAAAAA0AAAAHAAcAAAAAAA0AAAAGAAcAAAAAAA0AAAAFAAcAAAAAAA0AAAAEAAcAAAAAAA0AAAADAAcAAAAAAA4AAAACAAcAAAAAAA4AAAABAAcAAAAAAA4AAAAAAAcAAAAAAA4AAAAEAAgAAAAAAA4AAAAFAAgAAAAAAA4AAAAGAAgAAAAAAA4AAAAHAAgAAAAAAA4AAAAIAAgAAAAAAA4AAAAJAAgAAAAAAA4AAAAAAAgAAAAAAA8AAAABAAgAAAAAAA8AAAACAAgAAAAAAA8AAAADAAgAAAAAAA8AAAAAAAkAAAAAAA8AAAABAAkAAAAAAA8AAAACAAkAAAAAAA8AAAADAAkAAAAAAA8AAAAEAAkAAAAAAA8AAAAFAAkAAAAAAA8AAAAGAAkAAAAAAA8AAAAHAAkAAAAAAA8AAAAIAAkAAAAAAA8AAAAJAAkAAAAAAA8AAAAKAAkAAAAAAA8AAAAKAAgAAAAAAA8AAAALAAgAAAAAAA8AAAAMAAgAAAAAAA8AAAANAAgAAAAAAA8AAAAOAAgAAAAAAA8AAAAPAAgAAAAAAA8AAAAQAAgAAAAAAA8AAAARAAgAAAAAAA8AAAASAAgAAAAAAA8AAAATAAgAAAAAAA8AAAATAAkAAAAAAA8AAAATAAoAAAAAAA8AAAATAAsAAAAAAA8AAAASAAsAAAAAAA8AAAARAAsAAAAAAA8AAAAQAAsAAAAAAA8AAAAPAAsAAAAAAA8AAAAOAAsAAAAAAA8AAAANAAsAAAAAAA8AAAAMAAsAAAAAAA8AAAALAAsAAAAAAA8AAAAKAAsAAAAAAA8AAAAJAAsAAAAAAA8AAAAIAAsAAAAAAA8AAAAHAAsAAAAAAA8AAAAGAAsAAAAAAA8AAAAFAAsAAAAAAA8AAAAEAAsAAAAAAA8AAAADAAsAAAAAAA8AAAACAAsAAAAAAA8AAAABAAsAAAAAAA8AAAAAAAsAAAAAAA8AAAAAAAoAAAAAAA8AAAABAAoAAAAAAA8AAAACAAoAAAAAAA8AAAADAAoAAAAAAA8AAAAEAAoAAAAAAA8AAAAFAAoAAAAAAA8AAAAGAAoAAAAAAA8AAAAHAAoAAAAAAA8AAAAIAAoAAAAAAA8AAAAJAAoAAAAAAA8AAAAKAAoAAAAAAA8AAAALAAoAAAAAAA8AAAAMAAoAAAAAAA8AAAANAAoAAAAAAA8AAAAOAAoAAAAAAA8AAAAPAAoAAAAAAA8AAAAQAAoAAAAAAA8AAAARAAoAAAAAAA8AAAASAAoAAAAAAA8AAAASAAkAAAAAAA8AAAARAAkAAAAAAA8AAAAQAAkAAAAAAA8AAAAPAAkAAAAAAA8AAAAOAAkAAAAAAA8AAAANAAkAAAAAAA8AAAAMAAkAAAAAAA8AAAALAAkAAAAAAA8AAAA=")
+metadata/_edit_lock_ = true
+
+[node name="LevelTilesBackgroundWater" parent="TileMaps" instance=ExtResource("6_7cpy2")]
+tile_map_data = PackedByteArray("AAAAAAsAAAAEAAoAAAABAAsAAAAEAAoAAAACAAsAAAAEAAoAAAADAAsAAAAEAAoAAAAEAAsAAAAEAAoAAAAFAAsAAAAEAAoAAAAGAAsAAAAEAAoAAAAHAAsAAAAEAAoAAAAIAAsAAAAEAAoAAAAJAAsAAAAEAAoAAAAKAAsAAAAEAAoAAAALAAsAAAAEAAoAAAAMAAsAAAAEAAoAAAANAAsAAAAEAAoAAAAOAAsAAAAEAAoAAAAPAAsAAAAEAAoAAAAQAAsAAAAEAAoAAAARAAsAAAAEAAoAAAASAAsAAAAEAAoAAAATAAsAAAAEAAoAAAATAAoAAAAEAAoAAAASAAoAAAAEAAoAAAARAAoAAAAEAAoAAAAQAAoAAAAEAAoAAAAFAAoAAAAEAAoAAAAEAAoAAAAEAAoAAAADAAoAAAAEAAoAAAACAAoAAAAEAAoAAAABAAoAAAAEAAoAAAAAAAoAAAAEAAoAAAAGAAoAAAAEAAoAAAAHAAoAAAAEAAoAAAAIAAoAAAAEAAoAAAAJAAoAAAAEAAoAAAAKAAoAAAAEAAoAAAALAAoAAAAEAAoAAAAMAAoAAAAEAAoAAAANAAoAAAAEAAoAAAAOAAoAAAAEAAoAAAAPAAoAAAAEAAoAAAAAAAkAAAAFAAkAAAABAAkAAAAFAAkAAAACAAkAAAAFAAkAAAADAAkAAAAEAAoAAAAEAAkAAAAEAAoAAAAFAAkAAAAEAAoAAAAGAAkAAAAEAAoAAAAHAAkAAAAEAAoAAAAIAAkAAAAEAAoAAAAJAAkAAAAEAAoAAAAKAAkAAAAEAAoAAAALAAkAAAAEAAkAAAAMAAkAAAAEAAkAAAANAAkAAAAFAAkAAAAOAAkAAAAFAAkAAAAPAAkAAAAFAAkAAAAQAAkAAAAFAAkAAAARAAkAAAAFAAkAAAASAAkAAAAFAAkAAAATAAkAAAAFAAkAAAADAAgAAAAFAAkAAAAEAAgAAAAFAAkAAAAFAAgAAAAFAAkAAAAGAAgAAAAFAAkAAAAHAAgAAAAFAAkAAAAIAAgAAAAFAAkAAAAJAAgAAAAFAAkAAAAKAAgAAAAFAAkAAAALAAgAAAAFAAkAAAAMAAgAAAAFAAkAAAA=")
+metadata/_edit_lock_ = true
+
+[node name="MovingPlatforms" type="Node" parent="."]
+
+[node name="MovingPlatform" parent="MovingPlatforms" instance=ExtResource("9_h41bq")]
 position = Vector2(4, 15)
+color = 3
 speed = 175.0
-axis = "X"
-metadata/_edit_group_ = true
 
-[node name="EndPosition" parent="MovingPlatformYellow" index="3"]
-position = Vector2(264, 0)
+[node name="MovingPlatformSprite" parent="MovingPlatforms/MovingPlatform" index="0"]
+region_rect = Rect2(16, 32, 32, 9)
 
-[node name="MovingPlatformBlueSmall" parent="." instance=ExtResource("6_ut5mc")]
-position = Vector2(284, 115)
+[node name="EndPosition" parent="MovingPlatforms/MovingPlatform" index="3"]
+position = Vector2(204, 0)
+
+[node name="MovingPlatform3" parent="MovingPlatforms" instance=ExtResource("9_h41bq")]
+position = Vector2(304, 115)
+color = 1
+size = 1
 speed = 75.0
 axis = "Y"
-metadata/_edit_group_ = true
 
-[node name="EndPosition" parent="MovingPlatformBlueSmall" index="3"]
+[node name="MovingPlatformSprite" parent="MovingPlatforms/MovingPlatform3" index="0"]
+position = Vector2(8, 4)
+region_rect = Rect2(0, 16, 16, 9)
+
+[node name="MovingPlatformShape" parent="MovingPlatforms/MovingPlatform3" index="1"]
+position = Vector2(8, 4.5)
+shape = ExtResource("8_cgukj")
+
+[node name="EndPosition" parent="MovingPlatforms/MovingPlatform3" index="3"]
 position = Vector2(0, -100)
 
-[node name="Apple" parent="." instance=ExtResource("7_v6f2a")]
-position = Vector2(251, 119)
+[node name="MovingPlatform4" parent="MovingPlatforms" instance=ExtResource("9_h41bq")]
+position = Vector2(288, 115)
+size = 1
+speed = 75.0
+axis = "Y"
 
-[node name="Elexir" parent="." instance=ExtResource("8_3asr3")]
+[node name="MovingPlatformSprite" parent="MovingPlatforms/MovingPlatform4" index="0"]
+position = Vector2(8, 4)
+region_rect = Rect2(0, 48, 16, 9)
+
+[node name="MovingPlatformShape" parent="MovingPlatforms/MovingPlatform4" index="1"]
+position = Vector2(8, 4.5)
+shape = ExtResource("8_cgukj")
+
+[node name="EndPosition" parent="MovingPlatforms/MovingPlatform4" index="3"]
+position = Vector2(0, -100)
+
+[node name="Pickups" type="Node" parent="."]
+
+[node name="Apple" parent="Pickups" instance=ExtResource("7_v6f2a")]
+position = Vector2(248, 120)
+
+[node name="Elixir" parent="Pickups" instance=ExtResource("8_3asr3")]
 position = Vector2(200, 119)
 
-[node name="Coin" parent="." instance=ExtResource("9_xxomm")]
-position = Vector2(171, 119)
+[node name="Coin" parent="Pickups" instance=ExtResource("9_xxomm")]
+position = Vector2(168, 122)
 
-[node name="CheckpointArea" parent="." instance=ExtResource("11_8y202")]
-position = Vector2(14, 112)
+[node name="SurpriseBlocks" type="Node" parent="."]
 
-[node name="DetectionShape" parent="CheckpointArea" index="0"]
-position = Vector2(-7, -19)
-shape = SubResource("RectangleShape2D_41jug")
+[node name="SurpriseBlock" parent="SurpriseBlocks" instance=ExtResource("10_88hdw")]
+position = Vector2(100, 84)
+color = 2
 
-[node name="CheckpointArea2" parent="." instance=ExtResource("11_8y202")]
-position = Vector2(275, 113)
+[node name="BlockSprite" parent="SurpriseBlocks/SurpriseBlock" index="1"]
+region_rect = Rect2(0, 32, 16, 16)
 
-[node name="DetectionShape" parent="CheckpointArea2" index="0"]
-position = Vector2(-7, -19)
-shape = SubResource("RectangleShape2D_41jug")
+[node name="SurpriseBlock2" parent="SurpriseBlocks" instance=ExtResource("10_88hdw")]
+position = Vector2(118, 84)
+color = 1
 
-[node name="LowerWorldBoundary" parent="." instance=ExtResource("12_dii0p")]
-position = Vector2(0, 200)
+[node name="BlockSprite" parent="SurpriseBlocks/SurpriseBlock2" index="1"]
+region_rect = Rect2(48, 32, 16, 16)
 
-[editable path="MovingPlatformBrownSmall"]
-[editable path="MovingPlatformYellow"]
-[editable path="MovingPlatformBlueSmall"]
-[editable path="CheckpointArea"]
-[editable path="CheckpointArea2"]
+[node name="SurpriseBlock3" parent="SurpriseBlocks" instance=ExtResource("10_88hdw")]
+position = Vector2(82, 84)
+color = 3
+
+[node name="BlockSprite" parent="SurpriseBlocks/SurpriseBlock3" index="1"]
+region_rect = Rect2(64, 32, 16, 16)
+
+[node name="SurpriseBlock4" parent="SurpriseBlocks" instance=ExtResource("10_88hdw")]
+position = Vector2(64, 84)
+
+[node name="Bridges" type="Node" parent="."]
+
+[node name="Bridge" parent="Bridges" instance=ExtResource("14_p0ito")]
+position = Vector2(96, 128)
+
+[node name="Bridge2" parent="Bridges" instance=ExtResource("14_p0ito")]
+z_index = 4
+position = Vector2(224, 16)
+color = 1
+instable = true
+collapsing_time = 0.2
+fall_delay = 0.2
+collapse_order = 1
+
+[node name="Ladders" type="Node" parent="."]
+
+[node name="Ladder" type="Node2D" parent="Ladders"]
+position = Vector2(48, 82)
+metadata/_edit_group_ = true
+
+[node name="Ladder5" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+
+[node name="Ladder4" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 8)
+
+[node name="Ladder3" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 16)
+
+[node name="Ladder2" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 24)
+
+[node name="Ladder0" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 32)
+
+[editable path="MovingPlatforms/MovingPlatform"]
+[editable path="MovingPlatforms/MovingPlatform3"]
+[editable path="MovingPlatforms/MovingPlatform4"]
+[editable path="SurpriseBlocks/SurpriseBlock"]
+[editable path="SurpriseBlocks/SurpriseBlock/PlayerDetection"]
+[editable path="SurpriseBlocks/SurpriseBlock2"]
+[editable path="SurpriseBlocks/SurpriseBlock2/PlayerDetection"]
+[editable path="SurpriseBlocks/SurpriseBlock3"]
+[editable path="SurpriseBlocks/SurpriseBlock3/PlayerDetection"]
+[editable path="SurpriseBlocks/SurpriseBlock4"]
+[editable path="SurpriseBlocks/SurpriseBlock4/PlayerDetection"]

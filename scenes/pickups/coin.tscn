@@ -104,6 +104,7 @@ script = ExtResource("2_hc44s")
 
 [node name="PickupSprite" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_wp86f")
+autoplay = "default"
 
 [node name="DetectionShape" parent="." index="1"]
 shape = SubResource("CircleShape2D_gtlu5")

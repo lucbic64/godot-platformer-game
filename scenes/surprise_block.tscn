@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://brq7r4p22krkb"]
+
+[ext_resource type="Script" path="res://scripts/surprise_block.gd" id="1_uvxjk"]
+[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_vy0dh"]
+[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="2_nthpr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t21vb"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vgtw"]
+size = Vector2(16, 6)
+
+[node name="SurpriseBlock" type="StaticBody2D"]
+collision_layer = 4
+script = ExtResource("1_uvxjk")
+metadata/_edit_group_ = true
+
+[node name="BlockShape" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_t21vb")
+
+[node name="BlockSprite" type="Sprite2D" parent="."]
+position = Vector2(8, 8)
+texture = ExtResource("1_vy0dh")
+region_enabled = true
+region_rect = Rect2(112, 32, 16, 16)
+
+[node name="PlayerDetection" parent="." instance=ExtResource("2_nthpr")]
+
+[node name="DetectionShape" parent="PlayerDetection" index="0"]
+position = Vector2(8, 17)
+shape = SubResource("RectangleShape2D_5vgtw")
+
+[editable path="PlayerDetection"]

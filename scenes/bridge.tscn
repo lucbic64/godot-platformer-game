@@ -1,0 +1,201 @@
+[gd_scene load_steps=11 format=3 uid="uid://can0ot5a7gtgi"]
+
+[ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_g8hby"]
+[ext_resource type="Script" path="res://scripts/bridge.gd" id="1_vvw46"]
+[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="3_2vxqr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_76vh5"]
+size = Vector2(48, 9.5)
+
+[sub_resource type="Gradient" id="Gradient_ktrem"]
+offsets = PackedFloat32Array(0.559322, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_261hb"]
+gradient = SubResource("Gradient_ktrem")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kxgjv"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(20, 2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = -125.2
+angle_max = 250.4
+angular_velocity_min = -180.0
+angular_velocity_max = 180.0
+gravity = Vector3(0, 30, 0)
+scale_min = 1.5
+scale_max = 1.9
+color_ramp = SubResource("GradientTexture1D_261hb")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 9.6
+
+[sub_resource type="Animation" id="Animation_cxcyc"]
+resource_name = "fade"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mid:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Right:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jtp3s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Left:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mid:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Right:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sr8g1"]
+_data = {
+"RESET": SubResource("Animation_jtp3s"),
+"fade": SubResource("Animation_cxcyc")
+}
+
+[node name="Bridge" type="Node2D"]
+script = ExtResource("1_vvw46")
+
+[node name="PlayerDetection" parent="." instance=ExtResource("3_2vxqr")]
+metadata/_edit_lock_ = true
+
+[node name="DetectionShape" parent="PlayerDetection" index="0"]
+position = Vector2(24, 4.75)
+shape = SubResource("RectangleShape2D_76vh5")
+
+[node name="Left" type="RigidBody2D" parent="."]
+collision_layer = 16
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="BridgeShapeLeft" type="CollisionPolygon2D" parent="Left"]
+position = Vector2(8, 4)
+polygon = PackedVector2Array(-7, -3, -8, -2, -8, 1, -7, 2, -6, 3, -2, 3, -1, 1.5, 0, 1.5, 1, 2.5, 2, 3.5, 6, 3.5, 7, 2.5, 8, 1.5, 8, -1, 7, -2, 6, -3, 2, -3, 1, -2, 0, -2, -1, -3, -2, -4, -6, -4)
+
+[node name="BridgeSpriteLeft" type="Sprite2D" parent="Left"]
+unique_name_in_owner = true
+position = Vector2(8, 4)
+texture = ExtResource("1_g8hby")
+region_enabled = true
+region_rect = Rect2(144, 0, 16, 9)
+
+[node name="Mid" type="RigidBody2D" parent="."]
+position = Vector2(16, 0)
+collision_layer = 16
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="BridgeShapeMid" type="CollisionPolygon2D" parent="Mid"]
+position = Vector2(7.8, 4)
+polygon = PackedVector2Array(-7, -1, -8, 0, -8, 2.5, -7, 3.5, -6, 4.5, -2, 4.5, -1, 3.5, 1, 3.5, 2, 4.5, 6, 4.5, 7, 3.5, 8, 2.5, 8, 0, 7, -1, 6, -2, 2, -2, 1, -1, -1, -1, -2, -2, -6, -2)
+
+[node name="BridgeSpriteMid" type="Sprite2D" parent="Mid"]
+unique_name_in_owner = true
+position = Vector2(7.8, 4)
+texture = ExtResource("1_g8hby")
+region_enabled = true
+region_rect = Rect2(160, 0, 16, 9)
+
+[node name="Right" type="RigidBody2D" parent="."]
+position = Vector2(32, 0)
+collision_layer = 16
+collision_mask = 31
+freeze = true
+metadata/_edit_group_ = true
+
+[node name="BridgeShapeRight" type="CollisionPolygon2D" parent="Right"]
+position = Vector2(7.8, 4.25)
+polygon = PackedVector2Array(1.2, -3.25, 0.200001, -2.25, -0.799999, -2.25, -1.8, -3.25, -5.8, -3.25, -6.8, -2.25, -7.8, -1.25, -8, 1.5, -7, 2.5, -6, 3.5, -2, 3.5, -1, 2.5, 0, 1.5, 1, 1.5, 2, 2.5, 6, 2.5, 7.2, 1.75, 8.2, 0.75, 8.2, -2.25, 7.2, -3.25, 6.2, -4.25, 2.2, -4.25)
+
+[node name="BridgeSpriteRight" type="Sprite2D" parent="Right"]
+unique_name_in_owner = true
+position = Vector2(7.8, 4.25)
+texture = ExtResource("1_g8hby")
+region_enabled = true
+region_rect = Rect2(176, 0, 16, 9)
+
+[node name="CollapseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+modulate = Color(0.714, 0.42, 0.227, 1)
+position = Vector2(24, 5)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_kxgjv")
+lifetime = 7.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sr8g1")
+}
+
+[connection signal="timeout" from="CollapseTimer" to="." method="collapse"]
+
+[editable path="PlayerDetection"]
