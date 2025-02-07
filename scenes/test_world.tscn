@@ -141,20 +141,25 @@ collapsing_time = 0.2
 fall_delay = 0.2
 collapse_order = 1
 
-[node name="Ladder5" parent="." instance=ExtResource("15_jdqw2")]
+[node name="Ladders" type="Node" parent="."]
+
+[node name="Ladder" type="Node2D" parent="Ladders"]
 position = Vector2(48, 82)
+metadata/_edit_group_ = true
 
-[node name="Ladder4" parent="." instance=ExtResource("15_jdqw2")]
-position = Vector2(48, 90)
+[node name="Ladder5" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
 
-[node name="Ladder3" parent="." instance=ExtResource("15_jdqw2")]
-position = Vector2(48, 98)
+[node name="Ladder4" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 8)
 
-[node name="Ladder2" parent="." instance=ExtResource("15_jdqw2")]
-position = Vector2(48, 106)
+[node name="Ladder3" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 16)
 
-[node name="Ladder" parent="." instance=ExtResource("15_jdqw2")]
-position = Vector2(48, 114)
+[node name="Ladder2" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 24)
+
+[node name="Ladder0" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 32)
 
 [editable path="MovingPlatforms/MovingPlatform"]
 [editable path="MovingPlatforms/MovingPlatform3"]
