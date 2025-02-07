@@ -4,8 +4,12 @@ extends Resource
 @export_group("Movement")
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var max_speed: float = 200
 @export_custom(PROPERTY_HINT_NONE, "suffix:px/s²") var acceleration: float = 50
-@export_custom(PROPERTY_HINT_NONE, "suffix:%") var friction: float = .2
-@export_custom(PROPERTY_HINT_NONE, "suffix:%") var air_friction: float = .05
+## High value due to faulty implementation of delta within lerp function
+@export_custom(PROPERTY_HINT_NONE, "suffix:%") var friction: float = 2000:
+	get(): return friction / 100
+## High value due to faulty implementation of delta within lerp function
+@export_custom(PROPERTY_HINT_NONE, "suffix:%") var air_friction: float = 500:
+	get(): return air_friction / 100
 
 @export_group("Jump")
 @export_custom(PROPERTY_HINT_NONE, "suffix:px") var jump_height: float = 100
@@ -13,6 +17,11 @@ extends Resource
 @export_custom(PROPERTY_HINT_NONE, "suffix:s") var jump_peak: float = 0.5
 ## The time in seconds for the character to land on the ground after the peak of the jump was reached
 @export_custom(PROPERTY_HINT_NONE, "suffix:s") var jump_descent: float = 0.5
+
+@export_group("Climb")
+@export_custom(PROPERTY_HINT_NONE, "suffix:px/s") var climb_speed: float = 25
+@export_custom(PROPERTY_HINT_NONE, "suffix:%") var movement_reduction: float = 25:
+	get(): return movement_reduction / 100
 
 var jump_velocity: float
 var jump_gravity: float
