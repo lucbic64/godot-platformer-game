@@ -7,9 +7,9 @@ extends State
 
 func process_physics(delta: float) -> State:
 	if Input.is_action_pressed("jump"):
-		parent.velocity.y = -25
+		parent.velocity.y = -parent.player_movement.climb_speed
 	else:
-		parent.velocity.y = 25
+		parent.velocity.y = parent.player_movement.climb_speed
 	
 	var direction := Input.get_axis("left", "right")
 	
@@ -23,7 +23,7 @@ func process_physics(delta: float) -> State:
 				parent.player_movement.acceleration * delta
 			)
 		else:
-			parent.velocity.x = parent.player_movement.max_speed * 0.25 * direction
+			parent.velocity.x = parent.player_movement.max_speed * parent.player_movement.movement_reduction * direction
 	else:
 		if parent.is_on_floor():
 			parent.velocity.x = lerp(

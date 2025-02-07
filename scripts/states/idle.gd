@@ -20,8 +20,9 @@ func process_physics(delta: float) -> State:
 		parent.velocity.x = lerp(
 			parent.velocity.x,
 			0.0,
-			(parent.player_movement.friction if parent.is_on_floor() else parent.player_movement.air_friction) * delta
+			parent.player_movement.friction * delta
 		)
+		print(parent.player_movement.friction)
 	
 	parent.move_and_slide()
 	
