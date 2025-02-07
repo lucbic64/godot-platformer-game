@@ -1,19 +1,22 @@
 [gd_scene load_steps=4 format=3 uid="uid://0fxfkodeujeh"]
 
-[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="1_d1sn5"]
 [ext_resource type="Texture2D" uid="uid://bui75xwwbyaws" path="res://assets/brackeys_platformer_assets/sprites/world_tileset.png" id="1_ftkuk"]
+[ext_resource type="Script" path="res://scripts/ladder.gd" id="2_3x364"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltvai"]
 size = Vector2(16, 16)
 
-[node name="Ladder" instance=ExtResource("1_d1sn5")]
+[node name="Ladder" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_3x364")
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+[node name="LadderArea" type="CollisionShape2D" parent="."]
+position = Vector2(8, 8)
+shape = SubResource("RectangleShape2D_ltvai")
+
+[node name="LadderSprite" type="Sprite2D" parent="."]
 position = Vector2(8, 8)
 texture = ExtResource("1_ftkuk")
 region_enabled = true
 region_rect = Rect2(144, 50, 16, 16)
-
-[node name="DetectionShape" parent="." index="1"]
-position = Vector2(8, 8)
-shape = SubResource("RectangleShape2D_ltvai")

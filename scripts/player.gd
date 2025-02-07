@@ -7,6 +7,7 @@ extends CharacterBody2D
 
 @onready var player_sprite = $PlayerSprite
 @onready var floor_detection = $FloorDetection
+@onready var ladder_detection = $LadderDetection
 @onready var state_machine = $StateMachine
 
 func _ready() -> void:

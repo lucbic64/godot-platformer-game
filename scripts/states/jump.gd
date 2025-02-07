@@ -4,6 +4,7 @@ extends State
 @export var fall_state: State
 @export var idle_state: State
 @export var run_state: State
+@export var climb_state: State
 
 func enter() -> void:
 	super()
@@ -38,5 +39,11 @@ func process_physics(delta: float) -> State:
 		if Input.get_axis("left", "right"):
 			return run_state
 		return idle_state
+	
+	return null
+
+func process_frame(_delta: float) -> State:
+	if parent.ladder_detection.has_overlapping_areas():
+		return climb_state
 	
 	return null
