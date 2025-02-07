@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bhltvuh5agp4h"]
+[gd_scene load_steps=14 format=4 uid="uid://bhltvuh5agp4h"]
 
 [ext_resource type="PackedScene" uid="uid://21go3c47b0ob" path="res://scenes/player.tscn" id="1_ol4xw"]
 [ext_resource type="Resource" uid="uid://btuu8hs0w70tm" path="res://resources/DefaultPlayerMovement.tres" id="2_3h4f3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bo3o4xjhal68v" path="res://scenes/pickups/elixir.tscn" id="8_3asr3"]
 [ext_resource type="PackedScene" uid="uid://iakuwgs2abgm" path="res://scenes/pickups/coin.tscn" id="9_xxomm"]
 [ext_resource type="PackedScene" uid="uid://csa6fbuddpq7b" path="res://scenes/checkpoint_area.tscn" id="11_8y202"]
+[ext_resource type="PackedScene" uid="uid://dmc04qixmpfkv" path="res://scenes/lower_world_boundary.tscn" id="12_dii0p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_41jug"]
 size = Vector2(6, 66)
@@ -63,13 +64,24 @@ position = Vector2(200, 119)
 position = Vector2(171, 119)
 
 [node name="CheckpointArea" parent="." instance=ExtResource("11_8y202")]
-position = Vector2(44, 113)
+position = Vector2(14, 112)
 
 [node name="DetectionShape" parent="CheckpointArea" index="0"]
 position = Vector2(-7, -19)
 shape = SubResource("RectangleShape2D_41jug")
 
+[node name="CheckpointArea2" parent="." instance=ExtResource("11_8y202")]
+position = Vector2(275, 113)
+
+[node name="DetectionShape" parent="CheckpointArea2" index="0"]
+position = Vector2(-7, -19)
+shape = SubResource("RectangleShape2D_41jug")
+
+[node name="LowerWorldBoundary" parent="." instance=ExtResource("12_dii0p")]
+position = Vector2(0, 200)
+
 [editable path="MovingPlatformBrownSmall"]
 [editable path="MovingPlatformYellow"]
 [editable path="MovingPlatformBlueSmall"]
 [editable path="CheckpointArea"]
+[editable path="CheckpointArea2"]

@@ -7,3 +7,4 @@ enum Pickups {APPLE, ELIXIR, COIN}
 signal pickup_collected(type: Pickups)
 signal checkpoint_reached
 signal player_died(player: Player)
+signal player_fell_out_of_world(damage: int)

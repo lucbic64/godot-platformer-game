@@ -11,6 +11,7 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	Events.pickup_collected.connect(pickup_collected)
+	Events.player_fell_out_of_world.connect(damage)
 	player_movement.calc_jump_values()
 	state_machine.init(self)
 	player_data.health = player_data.start_health
@@ -70,6 +71,6 @@ func damage(hp: int) -> void:
 		player_data.health = 100
 
 func death() -> void:
-	print(player_data.lives)
+	Events.player_died.emit(self)
 	if player_data.lives < 1:
-		Events.player_died.emit(self)
+		pass #here reset method
