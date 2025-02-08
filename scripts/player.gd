@@ -12,7 +12,6 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	Events.pickup_collected.connect(pickup_collected)
-	Events.player_fell_out_of_world.connect(damage)
 	player_movement.calc_jump_values()
 	state_machine.init(self)
 	player_data.health = player_data.start_health
@@ -64,17 +63,15 @@ func check_floor_collision() -> void:
 				0: print("slippery")
 
 func heal(hp: int) -> void:
-	if player_data.health == player_data.max_health:
-		return
-	else:
-		player_data.health = mini(player_data.health + hp, player_data.max_health)
+	player_data.health = mini(player_data.health + hp, player_data.max_health)
 
 func damage(hp: int) -> void:
 	player_data.health -= hp
+	
 	if player_data.health <= 0:
-		player_data.lives = player_data.lives - 1
-		death() # Provisional implementation
-		player_data.health = 100
+		player_data.lives -= 1
+		death()
+		player_data.health = 100 # Provisional implementation
 
 func death() -> void:
 	Events.player_died.emit(self)
