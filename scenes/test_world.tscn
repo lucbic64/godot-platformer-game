@@ -149,10 +149,10 @@ collapse_order = 1
 [node name="Ladders" type="Node" parent="."]
 
 [node name="Ladder" type="Node2D" parent="Ladders"]
-position = Vector2(48, 82)
-metadata/_edit_group_ = true
+position = Vector2(48, 83)
 
 [node name="Ladder5" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
+position = Vector2(0, 0)
 
 [node name="Ladder4" parent="Ladders/Ladder" instance=ExtResource("15_jdqw2")]
 position = Vector2(0, 8)
