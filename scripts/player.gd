@@ -49,7 +49,7 @@ func check_floor_collision() -> void:
 		
 		match tile_data.get_custom_data("GroundProperties"):
 			1: print("slow")
-			2: damage(1)
+			2: print("damage")
 			3: print("slippery")
 	else:
 		var moving_platforms = floor_detection.get_overlapping_bodies().filter(func(element):
