@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://0m2bpme5bbe4"]
+
+[ext_resource type="PackedScene" uid="uid://bawwtsllensfb" path="res://scenes/hazard_area.tscn" id="1_j0bby"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_hv77f"]
+
+[node name="LowerWorldBounds" instance=ExtResource("1_j0bby")]
+damage_interval = 0.01
+damage_points = 1000000
+
+[node name="DetectionShape" parent="." index="0"]
+shape = SubResource("WorldBoundaryShape2D_hv77f")

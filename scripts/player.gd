@@ -49,7 +49,7 @@ func check_floor_collision() -> void:
 		
 		match tile_data.get_custom_data("GroundProperties"):
 			1: print("slow")
-			2: print("damage")
+			2: damage(1)
 			3: print("slippery")
 	else:
 		var moving_platforms = floor_detection.get_overlapping_bodies().filter(func(element):
@@ -63,16 +63,17 @@ func check_floor_collision() -> void:
 				0: print("slippery")
 
 func heal(hp: int) -> void:
-	if player_data.health == player_data.max_health:
-		return
-	else:
-		player_data.health = mini(player_data.health + hp, player_data.max_health)
-	print(player_data.health)
+	player_data.health = mini(player_data.health + hp, player_data.max_health)
 
 func damage(hp: int) -> void:
-	#print(player_data.health)
 	player_data.health -= hp
+	
 	if player_data.health <= 0:
-		player_data.lives = player_data.lives - 1 # Provisional implementation
-		print(player_data.lives)
-		player_data.health = 100
+		player_data.lives -= 1
+		death()
+		player_data.health = 100 # Provisional implementation
+
+func death() -> void:
+	Events.player_died.emit(self)
+	if player_data.lives < 1:
+		pass #here reset method

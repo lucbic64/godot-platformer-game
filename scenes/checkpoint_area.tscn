@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://csa6fbuddpq7b"]
+
+[ext_resource type="PackedScene" uid="uid://cllbeo3705r6b" path="res://scenes/player_detection.tscn" id="1_rtln5"]
+[ext_resource type="Script" path="res://scripts/checkpoint.gd" id="2_wr8pn"]
+
+[node name="CheckpointArea" instance=ExtResource("1_rtln5")]
+script = ExtResource("2_wr8pn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
