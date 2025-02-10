@@ -9,3 +9,4 @@ extends Resource
 
 var health: int
 var lives: int
+var coins: int
